@@ -25,3 +25,11 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Struct app folder
+
+-   components: Folder with the basic components
+
+-   core: Folder with the models and services to connect with the backend.
+
+-   views: Folder with the pages of the aplication.
