@@ -29,7 +29,8 @@ export class AuthService {
   }
 
 
-  login(): void {
+  login(user: User): void {
+    this.user = user;
     //  this.loginService.login(user).subscribe({
     //     next: res => {
     //       this.user = Object.assign(new User(JSON.stringify(res)));
