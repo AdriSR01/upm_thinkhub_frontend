@@ -1,0 +1,51 @@
+$upm-blue: #1867B7;
+
+.mat-toolbar {
+  background-color: $upm-blue !important;
+  color: white !important;
+  min-height: 75px !important;
+  height: 75px !important;
+}
+
+.container img {
+  max-width: 65px;
+  height: auto;
+  margin-right: 10px;
+  margin-top: 8px;
+}
+
+.title{
+  font-size: 32px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.mat-divider{
+  background-color: white;
+  width: 1px;
+  margin: 2px 5px 2px 5px;
+}
+
+.loggedElements{
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+}
+
+.white-button {
+  background-color: white;
+  border: none;
+}
+
+.clear-button {
+  background-color: transparent;
+  border-color: white;
+  color: white;
+}

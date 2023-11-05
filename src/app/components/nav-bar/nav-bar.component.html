@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <a class="container"><img src="assets/images/UPM_logo.png" /></a>
+  <h1 class="title">UPM ThinkHub</h1>
+  <div *ngIf="this.isLoggedIn" class="loggedElements">
+    <mat-divider [vertical]="true"></mat-divider>
+    <button mat-flat-button class="text-button clear-button" (click)="showMyIdeas()">
+      My ideas
+    </button>
+  </div>
+  <span class="spacer"></span>
+  <div *ngIf="this.isLoggedIn">
+    <button mat-flat-button class="text-button round-button white-button" (click)="logOut()">
+      Log Out
+    </button>
+  </div>
+  <div *ngIf="!this.isLoggedIn">
+    <button mat-flat-button class="text-button round-button clear-button" (click)="register()">
+      Register
+    </button>
+    <button mat-flat-button class="text-button round-button white-button" (click)="logIn()">
+      Log In
+    </button>
+  </div>
+</mat-toolbar>
