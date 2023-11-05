@@ -1,0 +1,21 @@
+.register-container {
+    display: flex;
+    gap: 90px;
+    padding: 10px 100px;
+
+    .column {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        .field {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+button {
+    border: none;
+}
