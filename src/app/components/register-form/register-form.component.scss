@@ -1,17 +1,35 @@
 .register-container {
     display: flex;
-    gap: 90px;
-    padding: 10px 100px;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+    width: fit-content;
 
-    .column {
+    .content {
         display: flex;
-        flex-direction: column;
-        gap: 40px;
+        gap: 90px;
 
-        .field {
-            width: 300px;
+        .column {
             display: flex;
             flex-direction: column;
+            gap: 40px;
+
+            .field {
+                width: 300px;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
+    .register-button-container {
+        display: flex;
+        justify-content: flex-end;
+
+        .register-button {
+            width: 130px;
         }
     }
 }
