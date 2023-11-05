@@ -1,3 +1,12 @@
+$upm-blue: #1867B7;
+
+.mat-toolbar {
+  background-color: $upm-blue !important;
+  color: white !important;
+  min-height: 75px !important;
+  height: 75px !important;
+}
+
 .container img {
   max-width: 65px;
   height: auto;
