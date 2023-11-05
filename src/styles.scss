@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+// Colors
+$upm-blue: #1867B7;
+$card-grey: #E1E1E1;
+$buttons-purple: #3F51B5;
 
+//Elements
 html,
 body {
     height: 100%;
@@ -10,6 +15,19 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-// Colors
-$upm-blue: #1867B7;
-$card-grey: #E1E1E1;
+mat-toolbar {
+  background-color: $upm-blue !important;
+  color: white !important;
+  min-height: 75px !important;
+  height: 75px !important;
+}
+
+.text-button{
+  margin: 10px;
+  padding: 10px 15px 10px 15px;
+  font-size: 14px;
+}
+
+.round-button {
+  border-radius: 36px;
+}
