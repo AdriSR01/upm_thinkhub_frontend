@@ -1,4 +1,4 @@
-$upm-blue: #1867B7;
+@import '../../../styles.scss';
 
 .mat-toolbar {
   background-color: $upm-blue !important;
@@ -14,7 +14,7 @@ $upm-blue: #1867B7;
   margin-top: 8px;
 }
 
-.title{
+.title {
   font-size: 32px;
   font-weight: bold;
   margin-right: 10px;
@@ -24,19 +24,19 @@ $upm-blue: #1867B7;
   flex: 1 1 auto;
 }
 
-.mat-divider{
+.mat-divider {
   background-color: white;
   width: 1px;
   margin: 2px 5px 2px 5px;
 }
 
-.loggedElements{
+.loggedElements {
   display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-	align-items: stretch;
-	align-content: stretch;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
 }
 
 .white-button {
@@ -44,8 +44,18 @@ $upm-blue: #1867B7;
   border: none;
 }
 
-.clear-button {
-  background-color: transparent;
-  border-color: white;
-  color: white;
+.register-button {
+  background-color: $upm-blue !important;
+  border: 1px white solid !important;
+  color: white !important;
+}
+
+.text-button {
+  margin: 10px;
+  padding: 10px 15px 10px 15px;
+  font-size: 14px;
+}
+
+.round-button {
+  border-radius: 36px;
 }

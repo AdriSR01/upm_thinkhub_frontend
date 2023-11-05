@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -7,23 +7,32 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
-  public isLoggedIn = this.authService.user !== undefined;
+  isLoggedIn: boolean;
 
-  constructor(private authService: AuthService){}
+  @Output() registerCliked = new EventEmitter();
+  @Output() loginCliked = new EventEmitter();
 
-  showMyIdeas(){
+  constructor(private authService: AuthService) {
+    this.isLoggedIn = this.authService.user !== undefined;
+
+    this.authService.loggedEvent.subscribe(() => {
+      this.isLoggedIn = this.authService.user !== undefined;
+    });
+  }
+
+  showMyIdeas() {
 
   }
 
-  logOut(){
-    this.authService.logout;
+  logOut() {
+    this.authService.logout();
   }
 
-  register(){
-    this.isLoggedIn = true;
+  register() {
+    this.registerCliked.emit();
   }
 
-  logIn(){
-    this.authService.login;
+  logIn() {
+    this.loginCliked.emit();
   }
 }
