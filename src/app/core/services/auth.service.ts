@@ -31,6 +31,7 @@ export class AuthService {
 
   login(user: User): void {
     this.user = user;
+    this.loggedEvent.emit();
     //  this.loginService.login(user).subscribe({
     //     next: res => {
     //       this.user = Object.assign(new User(JSON.stringify(res)));
@@ -45,5 +46,6 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem("user");
     this.userValue = undefined;
+    this.loggedEvent.emit();
   }
 }
