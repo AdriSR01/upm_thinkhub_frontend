@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'upm_thinkhub_frontend';
+
+  constructor(public dialog: MatDialog) { }
+
+  openRegisterDialog(): void {
+    this.dialog.open(RegisterFormComponent);
+  }
 }

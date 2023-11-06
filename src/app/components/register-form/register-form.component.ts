@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/app/core/models/User';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -17,7 +18,9 @@ export class RegisterFormComponent {
 
   @Output() finishRegister = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    public dialogRef: MatDialogRef<RegisterFormComponent>,
+    private formBuilder: FormBuilder,
     private authService: AuthService) {
     this.form = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
