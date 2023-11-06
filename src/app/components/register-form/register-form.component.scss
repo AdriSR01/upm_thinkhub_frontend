@@ -1,39 +1,65 @@
 .register-container {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding-top: 10px;
-    padding-left: 100px;
-    padding-right: 100px;
-    width: fit-content;
+    gap: 40px;
+    padding-top: 32px;
+    padding-bottom: 38px;
 
-    .content {
+    .header {
         display: flex;
-        gap: 90px;
+        justify-content: flex-end;
+        gap: 280px;
 
-        .column {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-
-            .field {
-                width: 300px;
-                display: flex;
-                flex-direction: column;
-            }
+        .title {
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
         }
     }
 
-    .register-button-container {
+    .register-form {
         display: flex;
-        justify-content: flex-end;
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 10px;
+        padding-left: 100px;
+        padding-right: 100px;
+        width: fit-content;
 
-        .register-button {
-            width: 130px;
+        .content {
+            display: flex;
+            gap: 90px;
+
+            .column {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+
+                .field {
+                    width: 300px;
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        }
+
+        .register-button-container {
+            display: flex;
+            justify-content: flex-end;
+
+            .register-button {
+                width: 130px;
+            }
         }
     }
 }
 
+
 button {
     border: none;
+}
+
+p {
+    margin: 0;
 }
