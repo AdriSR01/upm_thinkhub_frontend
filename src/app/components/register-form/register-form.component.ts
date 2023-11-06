@@ -39,7 +39,6 @@ export class RegisterFormComponent {
   }
 
   onSubmit() {
-    console.log("SUBMIT");
     const user: User = {
       name: this.form.controls['name'].value,
       lastName: this.form.controls['lastName'].value,
