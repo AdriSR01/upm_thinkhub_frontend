@@ -7,6 +7,12 @@
   height: 75px !important;
 }
 
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
 .container img {
   max-width: 65px;
   height: auto;
@@ -48,6 +54,15 @@
   background-color: $upm-blue !important;
   border: 1px white solid !important;
   color: white !important;
+}
+
+.section-button {
+  background-color: $upm-blue !important;
+  color: white !important;
+}
+
+.section-border {
+  border: 3px white solid !important;
 }
 
 .text-button {
