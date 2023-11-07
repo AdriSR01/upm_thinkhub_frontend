@@ -13,4 +13,13 @@ export class UsersService extends ApiService {
     return this.post('user/register', user);
   }
 
+  login(email: string, password: string): Observable<HttpResponse<any>> {
+    const body = {
+      email: email,
+      password: password
+    };
+
+    return this.post('user/login', body);
+  }
+
 }
