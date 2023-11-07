@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/app/core/models/User';
@@ -15,8 +15,6 @@ export class RegisterFormComponent {
 
   hidePassword = true;
   hideConfirmPassword = true;
-
-  @Output() finishRegister = new EventEmitter();
 
   constructor(
     public dialogRef: MatDialogRef<RegisterFormComponent>,
@@ -48,7 +46,6 @@ export class RegisterFormComponent {
     };
 
     this.authService.login(user);
-    this.finishRegister.emit();
     this.dialogRef.close();
   }
 
