@@ -1,0 +1,46 @@
+<div class="edit-idea-container">
+  <!-- Back button -->
+  <div class="back-button-container">
+    <button mat-button class="back-button"><mat-icon fontIcon="arrow_back"></mat-icon>Back</button>
+  </div>
+  <!-- Form input -->
+  <div class="form-container">
+    <form [formGroup]="form">
+      <div class="field-container">
+        <h3 class="title">Title</h3>
+        <mat-form-field>
+          <input matInput formControlName="title" placeholder="Name">
+        </mat-form-field>
+      </div>
+      <div class="field-container">
+        <h3 class="title">Description</h3>
+        <mat-form-field>
+          <textarea matInput formControlName="description" placeholder="Description"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="field-container">
+        <h3 class="title">Topic</h3>
+        <div class="topic-container">
+          <mat-form-field>
+            <mat-select required formControlName="topic" placeholder="Topic">
+              <mat-option *ngFor="let topic of topics" [value]="topic">
+                {{topic}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- Publish/save button -->
+  <div class="save-button-container">
+    <button mat-flat-button *ngIf="this.isNewIdea" type="submit" color="primary" class="save-button"
+      (click)="publishIdea()" [disabled]="!isFormValid()">
+      Publish idea
+    </button>
+    <button mat-flat-button *ngIf="!this.isNewIdea" type="submit" color="primary" class="save-button"
+      (click)="saveIdea()" [disabled]="!isFormValid()">
+      Save idea
+    </button>
+  </div>
+</div>
