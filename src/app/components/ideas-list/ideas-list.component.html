@@ -1,0 +1,37 @@
+<div class="list">
+    <mat-list>
+        <div *ngFor="let idea of ideas">
+            <mat-card class="idea-card">
+                <mat-card-content class="content-container">
+                    <div class="left-content">
+                        <h2 class="truncate-1-lines">{{idea.title}}</h2>
+                        <p class="truncate-3-lines ">{{idea.description}}
+                        </p>
+                        <a href="">View details <i class="fas fa-eye">👁</i></a>
+                    </div>
+                    <div class="right-content">
+                        <div class="button-section">
+                            <ng-container *ngFor="let topic of idea['topics']; let i = index">
+
+                                <button *ngIf="i < 2" mat-flat-button class="topic-button" color="primary">{{ topic
+                                    }}</button>
+
+                            </ng-container>
+                            <button *ngIf="idea['topics'].length > 2" mat-flat-button class="topic-button more-button"
+                                color="primary">
+                                <div class="more-button-icon"><mat-icon>more_horiz</mat-icon></div>
+                            </button>
+
+                        </div>
+                        <div class="like-button-section">
+                            <h2 class="centered-h2">{{idea.likes}}</h2>
+                            <button mat-fab color="warn">
+                                <mat-icon>thumb_up</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-list>
+</div>
