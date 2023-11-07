@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -7,23 +8,43 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent {
-  public isLoggedIn = this.authService.user !== undefined;
+  isLoggedIn: boolean;
+  myIdeasSection: boolean;
 
-  constructor(private authService: AuthService){}
+  @Output() registerCliked = new EventEmitter();
+  @Output() loginCliked = new EventEmitter();
 
-  showMyIdeas(){
+  constructor(private authService: AuthService,
+    private router: Router) {
+    this.isLoggedIn = this.authService.user !== undefined;
+    this.myIdeasSection = this.router.url === 'my-ideas';
+
+    this.authService.loggedEvent.subscribe(() => {
+      this.isLoggedIn = this.authService.user !== undefined;
+    });
+
+    this.router.events.subscribe(() => {
+      this.myIdeasSection = this.router.url === 'my-ideas';
+    });
+  }
+
+  onClickLogo() {
+    this.router.navigate(['']);
+  }
+
+  showMyIdeas() {
 
   }
 
-  logOut(){
-    this.authService.logout;
+  logOut() {
+    this.authService.logout();
   }
 
-  register(){
-    this.isLoggedIn = true;
+  register() {
+    this.registerCliked.emit();
   }
 
-  logIn(){
-    this.authService.login;
+  logIn() {
+    this.loginCliked.emit();
   }
 }
