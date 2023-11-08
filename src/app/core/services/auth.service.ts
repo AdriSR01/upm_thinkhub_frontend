@@ -11,13 +11,7 @@ export class AuthService {
   @Output()
   loggedEvent: EventEmitter<void> = new EventEmitter();
 
-  constructor() {
-    const userSession = localStorage.getItem("user");
-
-    if (userSession) {
-      this.userValue = new User(userSession);
-    }
-  }
+  constructor() {}
 
   get user(): User {
     return this.userValue as User;
@@ -25,15 +19,14 @@ export class AuthService {
 
   set user(value: User) {
     this.userValue = value;
-    localStorage.setItem("user", JSON.stringify(value));
   }
 
 
   login(user: User): void {
     this.user = user;
     this.loggedEvent.emit();
-    //  this.loginService.login(user).subscribe({
-    //     next: res => {
+    //  this.usersService.login(user.email, user.password).subscribe({
+    //     next: (user:User) => {
     //       this.user = Object.assign(new User(JSON.stringify(res)));
     //       this.loggedEvent.emit();
     //     },
