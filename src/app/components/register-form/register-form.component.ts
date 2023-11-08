@@ -34,7 +34,7 @@ export class RegisterFormComponent {
 
   isFormValid() {
     return !this.form.controls['name'].invalid && !this.form.controls['lastName'].invalid
-      && !this.form.controls['email'].invalid && !this.form.controls['phone'].invalid
+      && !this.form.controls['email'].invalid && !this.form.controls['phoneNumber'].invalid
       && this.isValidPassword();
   }
 
