@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef } from '@angular/material/dialog';
 import { User } from 'src/app/core/models/User';
 import { AuthService } from 'src/app/core/services/auth.service';
+import {UsersService} from "../../core/services/backend/users.service";
 
 @Component({
   selector: 'app-register-form',
@@ -19,7 +20,8 @@ export class RegisterFormComponent {
   constructor(
     public dialogRef: MatDialogRef<RegisterFormComponent>,
     private formBuilder: FormBuilder,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private usersService: UsersService) {
     this.form = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
@@ -40,13 +42,20 @@ export class RegisterFormComponent {
     const user: User = {
       name: this.form.controls['name'].value,
       lastName: this.form.controls['lastName'].value,
-      email: this.form.controls['name'].value,
+      email: this.form.controls['email'].value,
       phone_number: this.form.controls['phone'].value,
       password: this.form.controls['password'].value
     };
 
-    this.authService.login(user);
-    this.dialogRef.close();
+    this.usersService.register(user).subscribe({
+      next: () => {
+        this.authService.login(user);
+        this.dialogRef.close();
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 
   private isValidPassword() {
