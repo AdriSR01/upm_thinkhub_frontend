@@ -33,6 +33,10 @@ export class EditIdeaComponent {
     this.isNewIdea = this.router.url === 'publish-idea';
   }
 
+  goBack() {
+    // this.router.navigate(['']);
+  }
+
   isFormValid() {
     return (
       !this.form.controls['title'].invalid &&
