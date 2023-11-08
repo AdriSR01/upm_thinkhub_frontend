@@ -59,7 +59,7 @@
         </div>
         <div class="register-button-container">
             <button mat-fab extended type="submit" color="primary" class="register-button" (click)="onSubmit()"
-                [disabled]="!isFormValid()">
+                [disabled]="!form.valid || !isValidPassword()">
                 Register
             </button>
         </div>

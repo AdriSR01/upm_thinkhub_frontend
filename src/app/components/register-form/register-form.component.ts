@@ -32,12 +32,6 @@ export class RegisterFormComponent {
     });
   }
 
-  isFormValid() {
-    return !this.form.controls['name'].invalid && !this.form.controls['lastName'].invalid
-      && !this.form.controls['email'].invalid && !this.form.controls['phoneNumber'].invalid
-      && this.isValidPassword();
-  }
-
   onSubmit() {
     const user: User = {
       name: this.form.controls['name'].value,
@@ -58,7 +52,7 @@ export class RegisterFormComponent {
     });
   }
 
-  private isValidPassword() {
+  isValidPassword() {
     if (this.form.controls['password'].invalid || this.form.controls['confirmPassword'].invalid) {
       return false;
     }
