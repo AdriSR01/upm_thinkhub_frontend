@@ -26,7 +26,7 @@ export class RegisterFormComponent {
       name: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(9)]),
+      phoneNumber: new FormControl('', [Validators.required, Validators.minLength(9)]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
       confirmPassword: new FormControl('', [Validators.required, Validators.minLength(8)])
     });
@@ -43,7 +43,7 @@ export class RegisterFormComponent {
       name: this.form.controls['name'].value,
       lastName: this.form.controls['lastName'].value,
       email: this.form.controls['email'].value,
-      phone_number: this.form.controls['phone'].value,
+      phoneNumber: this.form.controls['phoneNumber'].value,
       password: this.form.controls['password'].value
     };
 
