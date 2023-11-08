@@ -30,7 +30,7 @@ export class EditIdeaComponent {
       topic: new FormControl('', [Validators.required]),
     });
 
-    this.isNewIdea = this.router.url === 'publish-idea';
+    this.isNewIdea = this.router.url === 'publishIdea';
   }
 
   goBack() {
