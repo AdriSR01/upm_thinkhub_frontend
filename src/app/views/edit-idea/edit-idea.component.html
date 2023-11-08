@@ -36,13 +36,13 @@
 
     <!-- Publish/save button -->
     <div class="save-button-container">
-      <button mat-flat-button *ngIf="this.isNewIdea" type="submit" color="primary" class="save-button"
+      <!-- <button mat-flat-button *ngIf="this.isNewIdea" type="submit" color="primary" class="save-button"
         (click)="publishIdea()" [disabled]="!isFormValid()">
         Publish idea
-      </button>
-      <button mat-flat-button *ngIf="!this.isNewIdea" type="submit" color="primary" class="save-button"
+      </button> -->
+      <button mat-flat-button type="submit" color="primary" class="save-button"
         (click)="saveIdea()" [disabled]="!isFormValid()">
-        Save idea
+        {{this.isNewIdea ? 'Publish idea' : 'Save idea'}}
       </button>
     </div>
   </div>

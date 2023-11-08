@@ -34,7 +34,7 @@ export class EditIdeaComponent {
   }
 
   goBack() {
-    // this.router.navigate(['']);
+    this.router.navigate(['']);
   }
 
   isFormValid() {
@@ -44,8 +44,6 @@ export class EditIdeaComponent {
       !this.form.controls['topic'].invalid
     );
   }
-
-  publishIdea() {}
 
   saveIdea() {}
 }
