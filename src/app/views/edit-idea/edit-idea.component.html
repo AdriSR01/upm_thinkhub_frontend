@@ -1,0 +1,46 @@
+<div class="edit-idea-container">
+  <div>
+    <!-- Back button -->
+    <div class="back-button-container">
+      <button mat-button class="back-button" (click)="goBack()"><mat-icon fontIcon="arrow_back"></mat-icon>Back</button>
+    </div>
+    <!-- Form input -->
+    <form [formGroup]="form">
+      <div class="form-container">
+        <div class="field-container">
+          <h3 class="title">Title</h3>
+          <mat-form-field>
+            <input matInput formControlName="title" placeholder="Name">
+          </mat-form-field>
+        </div>
+        <div class="field-container">
+          <h3 class="title">Description</h3>
+          <mat-form-field>
+            <textarea matInput formControlName="description" placeholder="Description" rows="9" cols="10"></textarea>
+          </mat-form-field>
+        </div>
+        <div class="field-container">
+          <h3 class="title">Topic</h3>
+          <div class="field-container">
+            <mat-form-field>
+              <mat-select required formControlName="topic" placeholder="Topic">
+                <mat-option *ngFor="let topic of topics" [value]="topic">
+                  {{topic}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- Publish/save button -->
+    <div class="save-button-container">
+      <button mat-flat-button type="submit" color="primary" class="save-button"
+        (click)="saveIdea()" [disabled]="!isFormValid()">
+        {{this.isNewIdea ? 'Publish idea' : 'Save idea'}}
+      </button>
+    </div>
+  </div>
+
+</div>
