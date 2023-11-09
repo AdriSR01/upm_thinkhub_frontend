@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Idea } from 'src/app/core/models/Idea';
+import { Idea } from '../../core/models/Idea';
 
 @Component({
   selector: 'app-ideas-list',
@@ -15,12 +15,7 @@ export class IdeasListComponent {
       likes: 325,
       user_id: 'user1',
       id: 'idea1',
-      topics: [
-        'Sustainability',
-        'Technology',
-        'Energy Efficiency',
-        'Technology',
-      ],
+      topic: 'Technological',
     },
     {
       title: 'AI-Powered Healthcare Assistant',
@@ -29,7 +24,7 @@ export class IdeasListComponent {
       likes: 478,
       user_id: 'user2',
       id: 'idea2',
-      topics: ['Technology', 'Home Automation'],
+      topic: 'Technological',
     },
     {
       title: 'Urban Vertical Farming',
@@ -38,7 +33,7 @@ export class IdeasListComponent {
       likes: 212,
       user_id: 'user3',
       id: 'idea3',
-      topics: ['Renewable Energy', 'Technology', 'Home Automation'],
+      topic: 'Technological',
     },
   ];
 }
