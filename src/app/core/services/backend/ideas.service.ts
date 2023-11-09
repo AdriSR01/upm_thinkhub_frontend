@@ -9,7 +9,13 @@ import {Idea} from "../../models/Idea";
 })
 export class IdeasService extends ApiService{
 
+  readonly SERVICE_NAME = 'ideas';
+
   getAllIdeas(): Observable<Idea[]> {
-    return this.get<Idea[]>('ideas');
+    return this.get<Idea[]>(this.SERVICE_NAME);
+  }
+
+  addLike(id: string): Observable<HttpResponse<any>> {
+    return this.patch(`${this.SERVICE_NAME}/likeIdea/${id}`);
   }
 }
