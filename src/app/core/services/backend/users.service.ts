@@ -10,8 +10,8 @@ import { ApiService } from './api.service';
 export class UsersService extends ApiService {
 
   readonly SERVICE_NAME = 'user';
-  register(user: User): Observable<HttpResponse<any>> {
-    return this.post(`${this.SERVICE_NAME}/register`, user);
+  register(user: User): Observable<User> {
+    return this.post<User>(`${this.SERVICE_NAME}/register`, user);
   }
 
   login(email: string, password: string): Observable<User> {
