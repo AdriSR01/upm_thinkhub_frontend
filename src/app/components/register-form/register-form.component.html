@@ -3,7 +3,7 @@
         <p class="title">UPM ThinkHub</p>
         <button mat-button mat-dialog-close>X</button>
     </div>
-    <form [formGroup]="form" class="register-form">
+    <form *ngIf="!loading" [formGroup]="form" class="register-form">
         <div class="content">
             <!--First column-->
             <div class="column">
@@ -64,4 +64,7 @@
             </button>
         </div>
     </form>
+  <div *ngIf="loading" class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
 </div>

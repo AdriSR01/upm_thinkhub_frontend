@@ -17,6 +17,8 @@ export class RegisterFormComponent {
   hidePassword = true;
   hideConfirmPassword = true;
 
+  loading = false;
+
   constructor(
     public dialogRef: MatDialogRef<RegisterFormComponent>,
     private formBuilder: FormBuilder,
@@ -41,10 +43,12 @@ export class RegisterFormComponent {
       password: this.form.controls['password'].value
     };
 
+    this.loading = true;
     this.usersService.register(user).subscribe({
       next: () => {
         this.authService.login(user);
         this.dialogRef.close();
+        this.loading = false;
       },
       error: (error) => {
         console.log(error);
