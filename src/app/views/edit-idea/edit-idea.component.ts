@@ -61,18 +61,20 @@ export class EditIdeaComponent {
       topic: this.form.controls['topic'].value,
       description: this.form.controls['description'].value,
       // user_id: this.authService.user.id,
-      user_id: "a57e99f5-9c05-4b56-b4b0-c6fdd73c266f",
+      user_id: 'a57e99f5-9c05-4b56-b4b0-c6fdd73c266f',
     };
 
-    this.isNewIdea ? this.publishIdea(idea) : this.saveIdea(idea);
+    this.publishIdea(idea);
+
+    // this.isNewIdea ? this.publishIdea(idea) : this.saveIdea(idea);
   }
 
   publishIdea(idea: Idea) {
     this.ideasService.createIdea(idea).subscribe({
       next: () => {
-        this.snackBar.open("Idea saved successfully", "Dismiss", {
-          duration: 3000
-        })
+        this.snackBar.open('Idea saved successfully', 'Dismiss', {
+          duration: 3000,
+        });
       },
       error: (error) => {
         console.log(error);
