@@ -40,9 +40,10 @@ button.topic-button:disabled {
   color: white;
 }
 
-i.fas.fa-eye {
+.eye-icon {
   font-size: 18px;
-  margin-right: 8px;
+  margin-left: 5px;
+  position: absolute;
 }
 
 .content-container {
