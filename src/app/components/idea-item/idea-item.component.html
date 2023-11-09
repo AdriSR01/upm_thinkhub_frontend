@@ -4,22 +4,16 @@
             <h2 class="truncate-1-lines">{{idea.title}}</h2>
             <p class="truncate-3-lines ">{{idea.description}}
             </p>
-            <a href="">View details <mat-icon class="eye-icon">remove_red_eye</mat-icon></a>
+            <button mat-button color="primary">
+              View details
+              <mat-icon iconPositionEnd>remove_red_eye</mat-icon>
+            </button>
         </div>
         <div class="right-content">
             <div class="button-section">
-                <ng-container *ngFor="let topic of idea['topics']; let i = index">
-
-                    <button *ngIf="i < 2" mat-flat-button disabled class="topic-button" color="primary">{{
-                        topic
-                        }}</button>
-
-                </ng-container>
-                <button *ngIf="idea['topics'].length > 2" mat-flat-button disabled class="topic-button more-button"
-                    color="primary">
-                    <div class="more-button-icon"><mat-icon>more_horiz</mat-icon></div>
+                <button mat-flat-button disabled class="topic-button" color="primary">
+                  {{idea.topic}}
                 </button>
-
             </div>
             <div class="like-button-section">
                 <h2 class="centered-h2">{{idea.likes}}</h2>

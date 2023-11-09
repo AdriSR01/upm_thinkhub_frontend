@@ -40,15 +40,19 @@ button.topic-button:disabled {
   color: white;
 }
 
-.eye-icon {
-  font-size: 18px;
-  margin-left: 5px;
-  position: absolute;
+.view-button {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
 }
 
 .content-container {
   display: flex;
   justify-content: space-between;
+}
+
+.mat-mdc-card-content {
+  padding: 0 0 0 0 !important;
 }
 
 .left-content {
