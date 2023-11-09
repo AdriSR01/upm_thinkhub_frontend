@@ -31,7 +31,7 @@
                 <div class="field">
                     <mat-form-field>
                         <mat-label>Phone number</mat-label>
-                        <input matInput placeholder="xxx xxx xxx" type="tel" formControlName="phone"
+                        <input matInput placeholder="xxx xxx xxx" type="tel" formControlName="phoneNumber"
                             pattern="[0-9]{9}" />
                     </mat-form-field>
                 </div>
@@ -59,7 +59,7 @@
         </div>
         <div class="register-button-container">
             <button mat-fab extended type="submit" color="primary" class="register-button" (click)="onSubmit()"
-                [disabled]="!isFormValid()">
+                [disabled]="!form.valid || !isValidPassword()">
                 Register
             </button>
         </div>

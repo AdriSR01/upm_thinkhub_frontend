@@ -18,6 +18,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { EditIdeaComponent } from './views/edit-idea/edit-idea.component';
 import { HomeComponent } from './views/home/home.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { HomeComponent } from './views/home/home.component';
     MatToolbarModule,
     MatDividerModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

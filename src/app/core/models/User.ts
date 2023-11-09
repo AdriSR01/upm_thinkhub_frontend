@@ -1,9 +1,9 @@
 export class User {
     email?: string;
-    last_name?: string;
+    lastName?: string;
     name?: string;
     password?: string;
-    phone_number?: string;
+    phoneNumber?: string;
     id?: string;
 
     [index: string]: any;
