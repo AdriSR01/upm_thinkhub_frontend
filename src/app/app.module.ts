@@ -23,6 +23,7 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { EditIdeaComponent } from './views/edit-idea/edit-idea.component';
 import { HomeComponent } from './views/home/home.component';
 import {HttpClientModule} from "@angular/common/http";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {HttpClientModule} from "@angular/common/http";
     MatDialogModule,
     MatListModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
   ],
   providers: [],

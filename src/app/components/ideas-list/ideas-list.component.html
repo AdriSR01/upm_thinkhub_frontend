@@ -1,5 +1,5 @@
 <div class="list">
-    <mat-list>
+    <mat-list *ngIf="!loading">
       <div *ngIf="showPublish" class="actions-container">
         <button mat-fab extended color="primary" class="save-button" (click)="publishIdea()">
           Publish a new idea
@@ -9,4 +9,6 @@
             <app-idea-item [idea]="idea"></app-idea-item>
         </div>
     </mat-list>
+  <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
 </div>
+
