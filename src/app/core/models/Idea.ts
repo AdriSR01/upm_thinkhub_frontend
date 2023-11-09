@@ -4,6 +4,7 @@ export class Idea {
     likes?: number;
     title?: string;
     userId?: string;
+    topic?: string;
     id?: string;
 
     [index: string]: any;

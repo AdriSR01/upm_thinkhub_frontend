@@ -40,7 +40,7 @@ export class EditIdeaComponent {
       topic: new FormControl('', [Validators.required]),
     });
 
-    this.isNewIdea = this.router.url === 'publishIdea';
+    this.isNewIdea = this.router.url === '/publishIdea';
   }
 
   goBack() {
@@ -72,6 +72,7 @@ export class EditIdeaComponent {
         this.snackBar.open('Idea saved successfully', 'Dismiss', {
           duration: 3000,
         });
+        this.form.reset();
       },
       error: (error) => {
         console.log(error);
