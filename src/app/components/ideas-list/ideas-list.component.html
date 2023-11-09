@@ -1,0 +1,12 @@
+<div class="list">
+    <mat-list>
+      <div class="actions-container">
+        <button mat-fab extended color="primary" class="save-button" (click)="publishIdea()">
+          Publish a new idea
+        </button>
+      </div>
+        <div *ngFor="let idea of ideas">
+            <app-idea-item [idea]="idea"></app-idea-item>
+        </div>
+    </mat-list>
+</div>
