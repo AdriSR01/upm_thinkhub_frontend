@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Idea } from 'src/app/core/models/Idea';
+import {IdeasService} from "../../core/services/backend/ideas.service";
 
 @Component({
   selector: 'app-idea-item',
@@ -8,4 +9,19 @@ import { Idea } from 'src/app/core/models/Idea';
 })
 export class IdeaItemComponent {
   @Input() idea!: Idea;
+
+  allowLike = true;
+  constructor(private ideasService: IdeasService) {
+  }
+  addLike() {
+    this.ideasService.addLike(this.idea.id!).subscribe({
+      next: (idea: Idea)=> {
+        this.allowLike = false;
+        this.idea = idea;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    })
+  }
 }
