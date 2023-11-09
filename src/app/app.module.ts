@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { IdeaItemComponent } from './components/idea-item/idea-item.component';
 import { IdeasListComponent } from './components/ideas-list/ideas-list.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -28,6 +29,7 @@ import { HomeComponent } from './views/home/home.component';
     RegisterFormComponent,
     NavBarComponent,
     IdeasListComponent,
+    IdeaItemComponent,
   ],
   imports: [
     BrowserModule,
