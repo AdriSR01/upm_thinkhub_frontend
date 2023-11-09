@@ -40,7 +40,7 @@ export class EditIdeaComponent {
       topic: new FormControl('', [Validators.required]),
     });
 
-    // this.isNewIdea = this.router.url === 'publishIdea';
+    this.isNewIdea = this.router.url === 'publishIdea';
   }
 
   goBack() {
@@ -60,13 +60,10 @@ export class EditIdeaComponent {
       title: this.form.controls['title'].value,
       topic: this.form.controls['topic'].value,
       description: this.form.controls['description'].value,
-      // user_id: this.authService.user.id,
-      user_id: 'a57e99f5-9c05-4b56-b4b0-c6fdd73c266f',
+      userId: this.authService.user.id,
     };
 
-    this.publishIdea(idea);
-
-    // this.isNewIdea ? this.publishIdea(idea) : this.saveIdea(idea);
+    this.isNewIdea ? this.publishIdea(idea) : this.saveIdea(idea);
   }
 
   publishIdea(idea: Idea) {

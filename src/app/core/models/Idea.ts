@@ -3,7 +3,7 @@ export class Idea {
     updated_date?: Date;
     likes?: number;
     title?: string;
-    user_id?: string;
+    userId?: string;
     id?: string;
 
     [index: string]: any;
