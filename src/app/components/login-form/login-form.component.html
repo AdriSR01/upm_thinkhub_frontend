@@ -29,8 +29,8 @@
       </button>
     </div>
   </form>
-  <div class="spinner-container">
-    <mat-spinner *ngIf="loading"></mat-spinner>
+  <div *ngIf="loading" class="spinner-container">
+    <mat-spinner></mat-spinner>
   </div>
 </div>
 
