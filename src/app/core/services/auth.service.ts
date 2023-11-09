@@ -25,15 +25,6 @@ export class AuthService {
   login(user: User): void {
     this.user = user;
     this.loggedEvent.emit();
-    //  this.usersService.login(user.email, user.password).subscribe({
-    //     next: (user:User) => {
-    //       this.user = Object.assign(new User(JSON.stringify(res)));
-    //       this.loggedEvent.emit();
-    //     },
-    //     error: error => {
-    //       console.log(error);
-    //     }
-    //   });
   }
 
   logout(): void {
