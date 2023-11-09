@@ -9,8 +9,9 @@ import { ApiService } from './api.service';
 })
 export class UsersService extends ApiService {
 
+  readonly SERVICE_NAME = 'user';
   register(user: User): Observable<HttpResponse<any>> {
-    return this.post('user/register', user);
+    return this.post(`${this.SERVICE_NAME}/register`, user);
   }
 
   login(email: string, password: string): Observable<User> {
@@ -19,7 +20,7 @@ export class UsersService extends ApiService {
       password: password
     };
 
-    return this.post<User>('user/login', body);
+    return this.post<User>(`${this.SERVICE_NAME}/login`, body);
   }
 
 }
