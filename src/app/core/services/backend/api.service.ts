@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  readonly ENDPOINT = 'http://localhost:8080';
+  readonly ENDPOINT = 'https://thinkhub-backend.onrender.com';
 
   constructor(private http: HttpClient) { }
 
