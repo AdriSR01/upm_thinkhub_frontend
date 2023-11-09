@@ -1,1 +1,36 @@
-<p>login-form works!</p>
+<div class="login-container">
+  <div class="header">
+    <p class="title">UPM ThinkHub</p>
+    <button mat-button mat-dialog-close>X</button>
+  </div>
+  <form *ngIf="!loading" [formGroup]="form" class="login-form">
+    <div class="content">
+      <div class="field">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="example@gmail.com" formControlName="email">
+        </mat-form-field>
+      </div>
+      <div class="field">
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="********" [type]="hidePassword ? 'password' : 'text'"
+                 formControlName="password">
+          <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="login-button-container">
+      <button mat-fab extended type="submit" color="primary" class="login-button" (click)="onSubmit()"
+              [disabled]="!form.valid">
+        Log in
+      </button>
+    </div>
+  </form>
+  <div *ngIf="loading" class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>
+

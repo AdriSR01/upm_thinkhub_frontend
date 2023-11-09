@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import {LoginFormComponent} from "./components/login-form/login-form.component";
 
 @Component({
   selector: 'app-root',
@@ -13,5 +14,9 @@ export class AppComponent {
 
   openRegisterDialog(): void {
     this.dialog.open(RegisterFormComponent);
+  }
+
+  openLoginDialog() {
+    this.dialog.open(LoginFormComponent);
   }
 }

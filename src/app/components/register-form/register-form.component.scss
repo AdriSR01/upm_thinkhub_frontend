@@ -1,9 +1,11 @@
 .register-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    padding-top: 32px;
-    padding-bottom: 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 32px;
+  padding-bottom: 38px;
+  width: 890px;
+  height: 481px;
 
     .header {
         display: flex;
@@ -53,13 +55,10 @@
             }
         }
     }
-}
-
-
-button {
-    border: none;
-}
-
-p {
-    margin: 0;
+  .spinner-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+  }
 }
