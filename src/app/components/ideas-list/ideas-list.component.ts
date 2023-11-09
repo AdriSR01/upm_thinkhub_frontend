@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Idea } from '../../core/models/Idea';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-ideas-list',
@@ -36,4 +37,11 @@ export class IdeasListComponent {
       topic: 'Technological',
     },
   ];
+
+  constructor(private router: Router) {
+  }
+
+  publishIdea(){
+    this.router.navigate(['publishIdea']);
+  }
 }
