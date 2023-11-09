@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Idea } from '../../core/models/Idea';
 import {Router} from "@angular/router";
+import {AuthService} from "../../core/services/auth.service";
 
 @Component({
   selector: 'app-ideas-list',
@@ -38,7 +39,14 @@ export class IdeasListComponent {
     },
   ];
 
-  constructor(private router: Router) {
+  showPublish = false;
+
+  constructor(private router: Router,
+              private authService: AuthService) {
+    this.showPublish = this.authService.user !== undefined;
+    this.authService.loggedEvent.subscribe(() => {
+      this.showPublish = this.authService.user !== undefined;
+    });
   }
 
   publishIdea(){
