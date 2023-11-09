@@ -27,6 +27,7 @@ export class EditIdeaComponent {
     'Social',
   ];
 
+  loading = false;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -67,12 +68,14 @@ export class EditIdeaComponent {
   }
 
   publishIdea(idea: Idea) {
+    this.loading = true;
     this.ideasService.createIdea(idea).subscribe({
       next: () => {
+        this.form.reset();
+        this.loading = false;
         this.snackBar.open('Idea saved successfully', 'Dismiss', {
           duration: 3000,
         });
-        this.form.reset();
       },
       error: (error) => {
         console.log(error);

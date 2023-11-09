@@ -1,5 +1,6 @@
 <div class="edit-idea-container">
-  <div>
+  <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
+  <div *ngIf="!loading">
     <!-- Back button -->
     <div class="back-button-container">
       <button mat-button class="back-button" (click)="goBack()"><mat-icon fontIcon="arrow_back"></mat-icon>Back</button>
