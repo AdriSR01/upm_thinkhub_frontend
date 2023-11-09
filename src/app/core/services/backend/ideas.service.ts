@@ -11,6 +11,10 @@ export class IdeasService extends ApiService{
 
   readonly SERVICE_NAME = 'ideas';
 
+  createIdea(idea: Idea): Observable<HttpResponse<any>> {
+    return this.post(`${this.SERVICE_NAME}/createIdea`, idea);
+  }
+
   getAllIdeas(): Observable<Idea[]> {
     return this.get<Idea[]>(this.SERVICE_NAME);
   }

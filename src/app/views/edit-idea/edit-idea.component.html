@@ -1,5 +1,6 @@
 <div class="edit-idea-container">
-  <div>
+  <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
+  <div *ngIf="!loading">
     <!-- Back button -->
     <div class="back-button-container">
       <button mat-button class="back-button" (click)="goBack()"><mat-icon fontIcon="arrow_back"></mat-icon>Back</button>
@@ -37,7 +38,7 @@
     <!-- Publish/save button -->
     <div class="save-button-container">
       <button mat-flat-button type="submit" color="primary" class="save-button"
-        (click)="saveIdea()" [disabled]="!isFormValid()">
+        (click)="onSubmit()" [disabled]="!isFormValid()">
         {{this.isNewIdea ? 'Publish idea' : 'Save idea'}}
       </button>
     </div>
