@@ -13,12 +13,13 @@
                         <div class="button-section">
                             <ng-container *ngFor="let topic of idea['topics']; let i = index">
 
-                                <button *ngIf="i < 2" mat-flat-button class="topic-button" color="primary">{{ topic
+                                <button *ngIf="i < 2" mat-flat-button disabled class="topic-button" color="primary">{{
+                                    topic
                                     }}</button>
 
                             </ng-container>
-                            <button *ngIf="idea['topics'].length > 2" mat-flat-button class="topic-button more-button"
-                                color="primary">
+                            <button *ngIf="idea['topics'].length > 2" mat-flat-button disabled
+                                class="topic-button more-button" color="primary">
                                 <div class="more-button-icon"><mat-icon>more_horiz</mat-icon></div>
                             </button>
 
