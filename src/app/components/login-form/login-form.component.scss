@@ -1,0 +1,51 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 32px;
+  padding-bottom: 38px;
+
+  .header {
+    display: flex;
+    justify-content: flex-end;
+    gap: 80px;
+
+    .title {
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+    width: fit-content;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      .field {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .login-button-container {
+      display: flex;
+      justify-content: center;
+
+      .login-button {
+        width: 130px;
+      }
+    }
+  }
+}
