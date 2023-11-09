@@ -4,7 +4,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
@@ -24,6 +23,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { EditIdeaComponent } from './views/edit-idea/edit-idea.component';
 import { HomeComponent } from './views/home/home.component';
+import {HttpClientModule} from "@angular/common/http";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
