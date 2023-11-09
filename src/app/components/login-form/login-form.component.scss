@@ -4,6 +4,8 @@
   gap: 40px;
   padding-top: 32px;
   padding-bottom: 38px;
+  width: 500px;
+  height: 363px;
 
   .header {
     display: flex;
@@ -48,4 +50,16 @@
       }
     }
   }
+
+  .spinner-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+}
+
+mat-spinner {
+  width: 70px !important;
+  height: 70px !important;
 }

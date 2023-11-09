@@ -16,6 +16,8 @@ export class LoginFormComponent {
 
   hidePassword = true;
 
+  loading = false;
+
   constructor(public dialogRef: MatDialogRef<LoginFormComponent>,
               private formBuilder: FormBuilder,
               private authService: AuthService,
@@ -27,10 +29,12 @@ export class LoginFormComponent {
   }
 
   onSubmit() {
+    this.loading = true;
     this.usersService.login(this.form.controls['email'].value, this.form.controls['password'].value).subscribe({
       next: (user: User) => {
         this.authService.login(user);
         this.dialogRef.close();
+        this.loading = false;
       },
       error: (error) => {
         console.log(error);
