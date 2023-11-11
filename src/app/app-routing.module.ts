@@ -1,19 +1,29 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { EditIdeaComponent } from './views/edit-idea/edit-idea.component';
-import { HomeComponent } from './views/home/home.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {EditIdeaComponent} from './views/edit-idea/edit-idea.component';
+import {HomeComponent} from './views/home/home.component';
+import {notLoggedGuard} from "./core/guards/not-logged.guard";
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
   },
-  { path: 'publishIdea', component: EditIdeaComponent },
-  { path: 'editIdea/:id', component: EditIdeaComponent },
+  {
+    path: 'publishIdea',
+    canActivate: [notLoggedGuard],
+    component: EditIdeaComponent
+  },
+  {
+    path: 'editIdea/:id',
+    canActivate: [notLoggedGuard],
+    component: EditIdeaComponent
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
