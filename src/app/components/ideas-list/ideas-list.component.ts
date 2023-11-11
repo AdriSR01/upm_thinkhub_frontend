@@ -14,8 +14,7 @@ export class IdeasListComponent {
 
   showPublish = false;
   loading = false;
-  ideasAscending = false;
-  ideasDescending = false;
+  sortOrder: SortOrder = '';
 
   constructor(
     private router: Router,
@@ -44,14 +43,14 @@ export class IdeasListComponent {
   }
 
   sortAscending() {
-    this.ideasAscending = !this.ideasAscending;
-    this.ideasDescending = false;
+    this.sortOrder = (this.sortOrder === 'ASC') ? '' : 'ASC';
     // TODO: Sort ideas by ascending order
   }
 
   sortDescending() {
-    this.ideasDescending = !this.ideasDescending;
-    this.ideasAscending = false;
+    this.sortOrder = (this.sortOrder === 'DESC') ? '' : 'DESC';
     // TODO: Sort ideas by descending order
   }
 }
+
+export type SortOrder = 'ASC' | 'DESC' | '';

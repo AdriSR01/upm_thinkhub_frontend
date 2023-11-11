@@ -11,10 +11,10 @@
       <div>
         <h4 class="title-filter">Sort by likes</h4>
         <div>
-          <button mat-icon-button (click)="sortAscending()" [ngStyle]="{'color': ideasAscending ? 'black' : 'gray'}">
+          <button mat-icon-button (click)="sortAscending()" [ngStyle]="{'color': sortOrder == 'ASC' ? 'black' : 'gray'}">
             <mat-icon class="icon-button">arrow_upward</mat-icon>
           </button>
-          <button mat-icon-button (click)="sortDescending()" [ngStyle]="{'color': ideasDescending ? 'black' : 'gray'}">
+          <button mat-icon-button (click)="sortDescending()" [ngStyle]="{'color': sortOrder == 'DESC' ? 'black' : 'gray'}">
             <mat-icon class="icon-button">arrow_downward</mat-icon>
           </button>
         </div>
