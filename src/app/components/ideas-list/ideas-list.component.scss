@@ -7,9 +7,7 @@
 }
 
 .actions-container {
-  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding-right: 30px;
   padding-left: 30px;
@@ -22,6 +20,7 @@
 .title-filter {
   font-weight: bold;
 }
+
 .publish-button {
   font-size: 20px;
   font-weight: 500;
