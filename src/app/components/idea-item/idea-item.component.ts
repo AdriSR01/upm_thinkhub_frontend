@@ -14,9 +14,9 @@ export class IdeaItemComponent {
   constructor(private ideasService: IdeasService) {
   }
   addLike() {
+    this.allowLike = false;
     this.ideasService.addLike(this.idea.id!).subscribe({
       next: (idea: Idea)=> {
-        this.allowLike = false;
         this.idea = idea;
       },
       error: (error) => {
