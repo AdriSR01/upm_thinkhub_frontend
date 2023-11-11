@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { User } from 'src/app/core/models/User';
-import { AuthService } from 'src/app/core/services/auth.service';
+import {Component} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDialogRef} from '@angular/material/dialog';
+import {User} from 'src/app/core/models/User';
+import {AuthService} from 'src/app/core/services/auth.service';
 import {UsersService} from "../../core/services/backend/users.service";
+import {snackBarConfig} from "../../core/config/snackBarConfig";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-register-form',
@@ -23,7 +25,8 @@ export class RegisterFormComponent {
     public dialogRef: MatDialogRef<RegisterFormComponent>,
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private usersService: UsersService) {
+    private usersService: UsersService,
+    private snackBar: MatSnackBar) {
     this.form = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
       lastName: new FormControl('', [Validators.required]),
@@ -48,11 +51,13 @@ export class RegisterFormComponent {
       next: (user: User) => {
         this.authService.login(user);
         this.dialogRef.close();
-        this.loading = false;
       },
-      error: (error) => {
-        console.log(error);
+      error: (err) => {
+        console.log(err);
+        this.snackBar.open(err.error.message, 'X', snackBarConfig);
       }
+    }).add(() => {
+      this.loading = false;
     });
   }
 
@@ -63,7 +68,7 @@ export class RegisterFormComponent {
     const matchPassword = this.form.controls['password'].value === this.form.controls['confirmPassword'].value;
 
     if (!matchPassword) {
-      this.form.controls['confirmPassword'].setErrors({ 'incorrect': true });
+      this.form.controls['confirmPassword'].setErrors({'incorrect': true});
     }
 
     return matchPassword;
