@@ -1,4 +1,4 @@
-@import '../../../styles.scss';
+@import "../../../styles.scss";
 
 .list {
   display: flex;
@@ -10,6 +10,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding-right: 30px;
   padding-left: 30px;
 }
@@ -18,4 +19,10 @@
   margin-top: 150px;
 }
 
+.title-filter {
+  font-weight: bold;
+}
 
+.icon-button {
+  transform: scale(1.5);
+}
