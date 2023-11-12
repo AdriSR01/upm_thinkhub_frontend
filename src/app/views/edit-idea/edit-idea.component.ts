@@ -1,11 +1,17 @@
-import {Component} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators,} from '@angular/forms';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {Router} from '@angular/router';
-import {Idea} from 'src/app/core/models/Idea';
-import {AuthService} from 'src/app/core/services/auth.service';
-import {IdeasService} from 'src/app/core/services/backend/ideas.service';
-import {snackBarConfig} from "../../core/config/snackBarConfig";
+import { Component } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { Idea } from 'src/app/core/models/Idea';
+import { Topics } from 'src/app/core/models/Topics';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { IdeasService } from 'src/app/core/services/backend/ideas.service';
+import { snackBarConfig } from '../../core/config/snackBarConfig';
 
 @Component({
   selector: 'app-edit-idea',
@@ -15,13 +21,7 @@ import {snackBarConfig} from "../../core/config/snackBarConfig";
 export class EditIdeaComponent {
   form: FormGroup;
   isNewIdea: boolean = true;
-  topics: string[] = [
-    'Technological',
-    'Industry',
-    'Commerce',
-    'Environment',
-    'Social',
-  ];
+  topics: string[] = Object.values(Topics);
 
   loading = false;
 
@@ -39,6 +39,7 @@ export class EditIdeaComponent {
     });
 
     this.isNewIdea = this.router.url === '/publishIdea';
+    this.topics.shift();
   }
 
   goBack() {

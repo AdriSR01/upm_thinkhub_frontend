@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Topics } from 'src/app/core/models/Topics';
 import { Idea } from '../../core/models/Idea';
 import { AuthService } from '../../core/services/auth.service';
 import { IdeasService } from '../../core/services/backend/ideas.service';
@@ -11,14 +12,7 @@ import { IdeasService } from '../../core/services/backend/ideas.service';
 })
 export class IdeasListComponent {
   ideas: Idea[] = [];
-  topics: string[] = [
-    'All',
-    'Technological',
-    'Industry',
-    'Commerce',
-    'Environment',
-    'Social',
-  ];
+  topics: string[] = Object.values(Topics);
 
   showPublish = false;
   loading = false;
