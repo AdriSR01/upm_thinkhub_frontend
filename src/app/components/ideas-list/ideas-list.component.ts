@@ -11,10 +11,19 @@ import { IdeasService } from '../../core/services/backend/ideas.service';
 })
 export class IdeasListComponent {
   ideas: Idea[] = [];
+  topics: string[] = [
+    'All',
+    'Technological',
+    'Industry',
+    'Commerce',
+    'Environment',
+    'Social',
+  ];
 
   showPublish = false;
   loading = false;
   sortOrder: SortOrder = '';
+  topicSelected: string = '';
 
   constructor(
     private router: Router,
@@ -36,6 +45,8 @@ export class IdeasListComponent {
         console.log(error);
       },
     });
+
+    this.topicSelected = this.topics[0];
   }
 
   publishIdea() {
@@ -43,13 +54,17 @@ export class IdeasListComponent {
   }
 
   sortAscending() {
-    this.sortOrder = (this.sortOrder === 'ASC') ? '' : 'ASC';
+    this.sortOrder = this.sortOrder === 'ASC' ? '' : 'ASC';
     // TODO: Sort ideas by ascending order
   }
 
   sortDescending() {
-    this.sortOrder = (this.sortOrder === 'DESC') ? '' : 'DESC';
+    this.sortOrder = this.sortOrder === 'DESC' ? '' : 'DESC';
     // TODO: Sort ideas by descending order
+  }
+
+  filterByTopic() {
+    //TODO: Filter by topic
   }
 }
 
