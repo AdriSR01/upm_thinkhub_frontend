@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Topics } from 'src/app/core/models/Topics';
 import { Idea } from '../../core/models/Idea';
 import { AuthService } from '../../core/services/auth.service';
 import { IdeasService } from '../../core/services/backend/ideas.service';
@@ -11,10 +12,12 @@ import { IdeasService } from '../../core/services/backend/ideas.service';
 })
 export class IdeasListComponent {
   ideas: Idea[] = [];
+  topics: string[] = Object.values(Topics);
 
   showPublish = false;
   loading = false;
   sortOrder: SortOrder = '';
+  topicSelected: string = '';
 
   constructor(
     private router: Router,
@@ -36,6 +39,8 @@ export class IdeasListComponent {
         console.log(error);
       },
     });
+
+    this.topicSelected = this.topics[0];
   }
 
   publishIdea() {
@@ -43,13 +48,17 @@ export class IdeasListComponent {
   }
 
   sortAscending() {
-    this.sortOrder = (this.sortOrder === 'ASC') ? '' : 'ASC';
+    this.sortOrder = this.sortOrder === 'ASC' ? '' : 'ASC';
     // TODO: Sort ideas by ascending order
   }
 
   sortDescending() {
-    this.sortOrder = (this.sortOrder === 'DESC') ? '' : 'DESC';
+    this.sortOrder = this.sortOrder === 'DESC' ? '' : 'DESC';
     // TODO: Sort ideas by descending order
+  }
+
+  filterByTopic() {
+    //TODO: Filter by topic
   }
 }
 
