@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ApiService} from "./api.service";
 import {Observable} from "rxjs";
-import {HttpResponse} from "@angular/common/http";
+import {HttpParams, HttpResponse} from "@angular/common/http";
 import {Idea} from "../../models/Idea";
+import {SortOrder} from "../../../components/ideas-list/ideas-list.component";
 
 @Injectable({
   providedIn: 'root'
 })
-export class IdeasService extends ApiService{
+export class IdeasService extends ApiService {
 
   readonly SERVICE_NAME = 'ideas';
 
@@ -15,8 +16,18 @@ export class IdeasService extends ApiService{
     return this.post(`${this.SERVICE_NAME}/createIdea`, idea);
   }
 
-  getAllIdeas(): Observable<Idea[]> {
-    return this.get<Idea[]>(this.SERVICE_NAME);
+  getAllIdeas(topic?: string, sortOder?: SortOrder): Observable<Idea[]> {
+    let queryParams = new HttpParams();
+
+    if (topic) {
+      queryParams = queryParams.append("topic", topic);
+    }
+
+    if (sortOder) {
+      queryParams = queryParams.append("sortByLikes", sortOder);
+    }
+
+    return this.get<Idea[]>(this.SERVICE_NAME, queryParams);
   }
 
   addLike(id: string): Observable<HttpResponse<any>> {
