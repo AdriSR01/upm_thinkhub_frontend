@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Topics } from 'src/app/core/models/Topics';
-import { Idea } from '../../core/models/Idea';
-import { AuthService } from '../../core/services/auth.service';
-import { IdeasService } from '../../core/services/backend/ideas.service';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {Topics} from 'src/app/core/models/Topics';
+import {Idea} from '../../core/models/Idea';
+import {AuthService} from '../../core/services/auth.service';
+import {IdeasService} from '../../core/services/backend/ideas.service';
 
 @Component({
   selector: 'app-ideas-list',
@@ -12,12 +12,12 @@ import { IdeasService } from '../../core/services/backend/ideas.service';
 })
 export class IdeasListComponent {
   ideas: Idea[] = [];
-  topics: string[] = Object.values(Topics);
+  topics: Topics[] = Object.values(Topics);
 
   showPublish = false;
   loading = false;
   sortOrder: SortOrder = '';
-  topicSelected: string = '';
+  topicSelected: Topics;
 
   constructor(
     private router: Router,
@@ -29,8 +29,17 @@ export class IdeasListComponent {
       this.showPublish = this.authService.user !== undefined;
     });
 
+    this.getIdeas();
+
+    this.topicSelected = this.topics[0];
+  }
+
+  private getIdeas() {
+    const topic = this.topicSelected !== Topics.ALL ? this.topicSelected : undefined;
+    const sort = this.sortOrder !== '' ? this.sortOrder : undefined;
+
     this.loading = true;
-    this.ideasService.getAllIdeas().subscribe({
+    this.ideasService.getAllIdeas(topic, sort).subscribe({
       next: (ideas: Idea[]) => {
         this.ideas = ideas;
         this.loading = false;
@@ -39,8 +48,6 @@ export class IdeasListComponent {
         console.log(error);
       },
     });
-
-    this.topicSelected = this.topics[0];
   }
 
   publishIdea() {
@@ -49,16 +56,16 @@ export class IdeasListComponent {
 
   sortAscending() {
     this.sortOrder = this.sortOrder === 'ASC' ? '' : 'ASC';
-    // TODO: Sort ideas by ascending order
+    this.getIdeas();
   }
 
   sortDescending() {
     this.sortOrder = this.sortOrder === 'DESC' ? '' : 'DESC';
-    // TODO: Sort ideas by descending order
+    this.getIdeas();
   }
 
   filterByTopic() {
-    //TODO: Filter by topic
+    this.getIdeas();
   }
 }
 
