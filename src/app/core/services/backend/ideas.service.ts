@@ -3,7 +3,7 @@ import {ApiService} from "./api.service";
 import {Observable} from "rxjs";
 import {HttpParams, HttpResponse} from "@angular/common/http";
 import {Idea} from "../../models/Idea";
-import {SortOrder} from "../../../components/ideas-list/ideas-list.component";
+import {SortOrder} from "../../config/types";
 
 @Injectable({
   providedIn: 'root'

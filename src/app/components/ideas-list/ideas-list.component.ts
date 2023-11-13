@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {Topics} from 'src/app/core/models/Topics';
+import {Topics} from 'src/app/core/constants/Topics';
 import {Idea} from '../../core/models/Idea';
 import {AuthService} from '../../core/services/auth.service';
 import {IdeasService} from '../../core/services/backend/ideas.service';
+import {SortOrder} from "../../core/config/types";
 
 @Component({
   selector: 'app-ideas-list',
@@ -16,7 +17,7 @@ export class IdeasListComponent {
 
   showPublish = false;
   loading = false;
-  sortOrder: SortOrder = '';
+  sortOrder?: SortOrder;
   topicSelected: Topics;
 
   constructor(
@@ -36,10 +37,9 @@ export class IdeasListComponent {
 
   private getIdeas() {
     const topic = this.topicSelected !== Topics.ALL ? this.topicSelected : undefined;
-    const sort = this.sortOrder !== '' ? this.sortOrder : undefined;
 
     this.loading = true;
-    this.ideasService.getAllIdeas(topic, sort).subscribe({
+    this.ideasService.getAllIdeas(topic, this.sortOrder).subscribe({
       next: (ideas: Idea[]) => {
         this.ideas = ideas;
         this.loading = false;
@@ -54,19 +54,11 @@ export class IdeasListComponent {
     this.router.navigate(['publishIdea']);
   }
 
-  sortAscending() {
-    this.sortOrder = this.sortOrder === 'ASC' ? '' : 'ASC';
-    this.getIdeas();
-  }
-
-  sortDescending() {
-    this.sortOrder = this.sortOrder === 'DESC' ? '' : 'DESC';
-    this.getIdeas();
-  }
-
-  filterByTopic() {
+  filter(sortOrder?: SortOrder) {
+    if (sortOrder) {
+      this.sortOrder = this.sortOrder === sortOrder ? undefined : sortOrder;
+    }
     this.getIdeas();
   }
 }
 
-export type SortOrder = 'ASC' | 'DESC' | '';
