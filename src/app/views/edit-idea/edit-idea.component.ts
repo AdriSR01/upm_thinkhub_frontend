@@ -1,17 +1,12 @@
-import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
-import { Idea } from 'src/app/core/models/Idea';
-import { Topics } from 'src/app/core/models/Topics';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { IdeasService } from 'src/app/core/services/backend/ideas.service';
-import { snackBarConfig } from '../../core/config/snackBarConfig';
+import {Component} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators,} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
+import {snackBarConfig} from '../../core/config/snackBarConfig';
+import {Topics} from "../../core/constants/Topics";
+import {AuthService} from "../../core/services/auth.service";
+import {IdeasService} from "../../core/services/backend/ideas.service";
+import {Idea} from "../../core/models/Idea";
 
 @Component({
   selector: 'app-edit-idea',
@@ -71,7 +66,10 @@ export class EditIdeaComponent {
       next: () => {
         this.form.reset();
         this.loading = false;
-        this.snackBar.open('Idea saved successfully', 'X', snackBarConfig);
+        this.snackBar.open('Idea saved successfully', 'X', {
+          ...snackBarConfig,
+          panelClass: ['info-snackbar']
+        });
       },
       error: (error) => {
         console.log(error);

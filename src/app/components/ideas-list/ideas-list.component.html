@@ -12,12 +12,12 @@
         <div class="likes-filter">
           <h4 class="title-filter">Sort by likes</h4>
           <div>
-            <button mat-icon-button (click)="sortAscending()"
-              [ngStyle]="{'color': sortOrder == 'ASC' ? 'black' : 'gray'}">
+            <button mat-icon-button (click)="filter('ASC')"
+                    [ngStyle]="{'color': sortOrder == 'ASC' ? 'black' : 'gray'}">
               <mat-icon class="icon-button">arrow_upward</mat-icon>
             </button>
-            <button mat-icon-button (click)="sortDescending()"
-              [ngStyle]="{'color': sortOrder == 'DESC' ? 'black' : 'gray'}">
+            <button mat-icon-button (click)="filter('DESC')"
+                    [ngStyle]="{'color': sortOrder == 'DESC' ? 'black' : 'gray'}">
               <mat-icon class="icon-button">arrow_downward</mat-icon>
             </button>
           </div>
@@ -25,8 +25,8 @@
         <!-- Filter by topic -->
         <div>
           <h4 class="title-filter">Search by topic</h4>
-          <mat-form-field>
-            <mat-select [(value)]="topicSelected" (selectionChange)="filterByTopic()">
+          <mat-form-field class="topic-selector">
+            <mat-select [(value)]="topicSelected" (selectionChange)="filter()">
               <mat-option *ngFor="let topic of topics" [value]="topic">
                 {{topic}}
               </mat-option>

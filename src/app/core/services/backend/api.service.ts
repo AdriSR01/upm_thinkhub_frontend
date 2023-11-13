@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,10 +8,11 @@ import { Observable } from 'rxjs';
 export class ApiService {
   readonly ENDPOINT = 'https://thinkhub-backend.onrender.com';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  get<T>(endpoint: string): Observable<T> {
-    return this.http.get<T>(`${this.ENDPOINT}/${endpoint}`);
+  get<T>(endpoint: string, params?: HttpParams): Observable<T> {
+    return this.http.get<T>(`${this.ENDPOINT}/${endpoint}`, {params: params});
   }
 
   post<T>(endpoint: string, body: any): Observable<T> {

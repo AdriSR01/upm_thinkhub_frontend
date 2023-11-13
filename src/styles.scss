@@ -22,3 +22,13 @@ button {
 p {
   margin: 0;
 }
+
+.info-snackbar {
+  --mdc-snackbar-container-color: white !important;
+  --mdc-snackbar-supporting-text-color: black !important;
+  --mat-snack-bar-button-color: #1867B7 !important;
+}
+
+.mat-mdc-select-panel {
+  max-height: none !important;
+}
