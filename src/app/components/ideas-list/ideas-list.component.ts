@@ -4,7 +4,7 @@ import {Topics} from 'src/app/core/constants/Topics';
 import {Idea} from '../../core/models/Idea';
 import {AuthService} from '../../core/services/auth.service';
 import {IdeasService} from '../../core/services/backend/ideas.service';
-import {SortOrder} from "../../core/config/types";
+import {SortOrder} from "../../core/types";
 
 @Component({
   selector: 'app-ideas-list',
