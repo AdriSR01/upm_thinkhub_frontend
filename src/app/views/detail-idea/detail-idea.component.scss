@@ -1,6 +1,6 @@
 @import '../../../styles.scss';
 
-.detail-idea-container{
+.detail-idea-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,15 +18,79 @@
     justify-content: center;
     gap: 20px;
 
-    .back-button-container{
+    .back-button-container {
       display: flex;
       justify-content: flex-start;
       width: 100%;
 
-      .back-button{
+      .back-button {
         color: $buttons-purple !important;
         font-size: 14px;
       }
     }
+
+    .user-card {
+      flex: 0 0 calc(33.33% - 20px);
+      width: 900px;
+      background-color: $card-grey;
+
+      .user-content {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 30px;
+
+        .title {
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+        }
+
+        .data-container {
+          display: flex;
+          justify-content: space-between;
+
+          .field {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            .field-name {
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 700;
+              line-height: normal;
+            }
+
+            .field-value {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 22px;
+            }
+          }
+        }
+      }
+    }
   }
 }
+
+mat-icon {
+  font-size: 20px;
+}
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+  --mdc-icon-button-state-layer-size: 20px;
+  width: var(--mdc-icon-button-state-layer-size);
+  height: var(--mdc-icon-button-state-layer-size);
+  padding: 0;
+}
+
+.mat-mdc-icon-button {
+  padding: 0;
+}
+

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Location} from "@angular/common";
 import {Idea} from "../../core/models/Idea";
 
@@ -15,6 +15,12 @@ export class DetailIdeaComponent {
     topic: "Technological",
     description: "A desktop application that will estimate the real duration of a sprint based on the velocity of the team and previous data from them",
     likes: 0,
+    user: {
+      name: 'Adrián',
+      lastName: 'Sánchez',
+      email: 'adri@gmail.com',
+      phoneNumber: '614876987'
+    }
   };
 
   loading = false;
