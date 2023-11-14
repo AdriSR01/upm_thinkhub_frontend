@@ -31,4 +31,8 @@ export class DetailIdeaComponent {
   goBack() {
     this.location.back();
   }
+
+  copy(text?: string) {
+    navigator.clipboard.writeText(text ?? '');
+  }
 }

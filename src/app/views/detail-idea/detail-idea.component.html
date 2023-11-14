@@ -26,7 +26,7 @@
             <p class="field-name">Email</p>
             <div class="field-value">
               {{idea.user?.email}}
-              <button mat-icon-button>
+              <button (click)="copy(idea.user?.email)" mat-icon-button>
                 <mat-icon>content_copy</mat-icon>
               </button>
             </div>
@@ -35,7 +35,7 @@
             <p class="field-name">Phone</p>
             <div class="field-value">
               {{idea.user?.phoneNumber}}
-              <button mat-icon-button>
+              <button (click)="copy(idea.user?.phoneNumber)" mat-icon-button>
                 <mat-icon>content_copy</mat-icon>
               </button>
             </div>
