@@ -23,9 +23,15 @@ p {
   margin: 0;
 }
 
+.snackbar-position {
+  border-radius: 4px;
+  margin-top: 85px !important;
+}
+
 .info-snackbar {
-  --mdc-snackbar-container-color: white !important;
-  --mdc-snackbar-supporting-text-color: black !important;
+  border: 1px solid $upm-blue;
+  --mdc-snackbar-container-color: rgba(24, 103, 183, 0.20) !important;
+  --mdc-snackbar-supporting-text-color: #1867B7 !important;
   --mat-snack-bar-button-color: #1867B7 !important;
 }
 
