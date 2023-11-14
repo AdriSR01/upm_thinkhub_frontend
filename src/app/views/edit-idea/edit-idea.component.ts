@@ -3,10 +3,9 @@ import {FormBuilder, FormControl, FormGroup, Validators,} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 import {snackBarConfig} from '../../core/config/snackBarConfig';
-import {Topics} from "../../core/constants/Topics";
 import {AuthService} from "../../core/services/auth.service";
 import {IdeasService} from "../../core/services/backend/ideas.service";
-import {Idea} from "../../core/models/Idea";
+import {Idea, Topics} from "../../core/models/Idea";
 
 @Component({
   selector: 'app-edit-idea',

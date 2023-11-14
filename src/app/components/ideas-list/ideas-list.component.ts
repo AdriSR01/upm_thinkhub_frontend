@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
-import {Topics} from 'src/app/core/constants/Topics';
-import {Idea} from '../../core/models/Idea';
+import {Idea, Topics} from '../../core/models/Idea';
 import {AuthService} from '../../core/services/auth.service';
 import {IdeasService} from '../../core/services/backend/ideas.service';
 import {SortOrder} from "../../core/types";

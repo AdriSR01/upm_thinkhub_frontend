@@ -4,7 +4,7 @@ export class Idea {
     likes?: number;
     title?: string;
     userId?: string;
-    topic?: string;
+    topic?: Topics;
     id?: string;
 
     [index: string]: any;
@@ -15,4 +15,13 @@ export class Idea {
             this[key] = jsonObj[key];
         });
     }
+}
+
+export enum Topics {
+  ALL = 'All',
+  TECHNOLOGICAL = 'Technological',
+  INDUSTRY = 'Industry',
+  COMMERCE = 'Commerce',
+  ENVIRONMENT = 'Environment',
+  SOCIAL = 'Social',
 }
