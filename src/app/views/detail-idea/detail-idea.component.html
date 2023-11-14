@@ -1,9 +1,17 @@
 <div class="detail-idea-container">
   <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
-  <div *ngIf="!loading">
+  <div *ngIf="!loading" class="detail-idea-content">
     <!-- Back button -->
     <div class="back-button-container">
-      <button mat-button class="back-button" (click)="goBack()"><mat-icon fontIcon="arrow_back"></mat-icon>Back</button>
+      <button (click)="goBack()" class="back-button" mat-button>
+        <mat-icon fontIcon="arrow_back"></mat-icon>
+        Back
+      </button>
     </div>
+    <!--Idea-->
+    <app-idea-item
+      [idea]="idea"
+      [showDetailButton]="false">
+    </app-idea-item>
   </div>
 </div>
