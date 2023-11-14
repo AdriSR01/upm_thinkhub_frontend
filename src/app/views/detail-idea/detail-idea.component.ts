@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Location} from "@angular/common";
 import {Idea} from "../../core/models/Idea";
+import {MatTooltip} from "@angular/material/tooltip";
 
 @Component({
   selector: 'app-detail-idea',
@@ -23,16 +24,30 @@ export class DetailIdeaComponent {
     }
   };
 
+  @ViewChild('emailTooltip') emailTooltip!: MatTooltip;
+  @ViewChild('phoneTooltip') phoneTooltip!: MatTooltip;
+
   loading = false;
 
   constructor(private location: Location) {
+  }
+
+  ngOnInit() {
+    this.emailTooltip.disabled = true;
+    this.phoneTooltip.disabled = true;
   }
 
   goBack() {
     this.location.back();
   }
 
-  copy(text?: string) {
+  copy(text: string, tooltip: MatTooltip) {
     navigator.clipboard.writeText(text ?? '');
+    tooltip.disabled = false
+    tooltip.show();
+    setTimeout(() => {
+      tooltip.hide();
+      tooltip.disabled = true;
+    }, 1000)
   }
 }

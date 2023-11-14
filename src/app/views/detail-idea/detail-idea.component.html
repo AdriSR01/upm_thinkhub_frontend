@@ -26,7 +26,13 @@
             <p class="field-name">Email</p>
             <div class="field-value">
               {{idea.user?.email}}
-              <button (click)="copy(idea.user?.email)" mat-icon-button>
+              <button
+                #emailTooltip="matTooltip"
+                (click)="copy(idea.user?.email!, emailTooltip)"
+                mat-icon-button
+                matTooltip="Copied"
+                matTooltipDisabled="true"
+                matTooltipPosition="below">
                 <mat-icon>content_copy</mat-icon>
               </button>
             </div>
@@ -35,7 +41,12 @@
             <p class="field-name">Phone</p>
             <div class="field-value">
               {{idea.user?.phoneNumber}}
-              <button (click)="copy(idea.user?.phoneNumber)" mat-icon-button>
+              <button
+                #phoneTooltip="matTooltip"
+                (click)="copy(idea.user?.phoneNumber!, phoneTooltip)"
+                mat-icon-button
+                matTooltip="Copied"
+                matTooltipPosition="below">
                 <mat-icon>content_copy</mat-icon>
               </button>
             </div>
