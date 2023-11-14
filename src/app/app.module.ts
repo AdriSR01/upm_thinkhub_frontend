@@ -25,6 +25,7 @@ import { EditIdeaComponent } from './views/edit-idea/edit-idea.component';
 import { HomeComponent } from './views/home/home.component';
 import {HttpClientModule} from "@angular/common/http";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { DetailIdeaComponent } from './views/detail-idea/detail-idea.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     IdeasListComponent,
     IdeaItemComponent,
     NavBarComponent,
-    EditIdeaComponent
+    EditIdeaComponent,
+    DetailIdeaComponent
   ],
   imports: [
     BrowserModule,
