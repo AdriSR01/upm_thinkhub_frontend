@@ -9,8 +9,6 @@
 .actions-container {
   display: flex;
   align-items: center;
-  padding-right: 30px;
-  padding-left: 30px;
 }
 
 .filters-container {
@@ -18,6 +16,12 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: baseline;
+}
+
+.ideas-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .likes-filter {

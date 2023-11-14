@@ -35,8 +35,8 @@
         </div>
       </div>
     </div>
-    <div *ngFor="let idea of ideas">
-      <app-idea-item [idea]="idea"></app-idea-item>
+    <div class="ideas-container">
+      <app-idea-item *ngFor="let idea of ideas" [idea]="idea"></app-idea-item>
     </div>
   </mat-list>
   <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
