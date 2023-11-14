@@ -4,7 +4,7 @@
             <h2 class="truncate-1-lines">{{idea.title}}</h2>
             <p class="truncate-3-lines ">{{idea.description}}
             </p>
-            <button mat-button color="primary">
+            <button mat-button color="primary" (click)="goToDetail()">
               View details
               <mat-icon iconPositionEnd>remove_red_eye</mat-icon>
             </button>
