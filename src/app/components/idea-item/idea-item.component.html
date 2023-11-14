@@ -1,26 +1,26 @@
 <mat-card class="idea-card">
-    <mat-card-content class="content-container">
-        <div class="left-content">
-            <h2 class="truncate-1-lines">{{idea.title}}</h2>
-            <p class="truncate-3-lines ">{{idea.description}}
-            </p>
-            <button mat-button color="primary" (click)="goToDetail()">
-              View details
-              <mat-icon iconPositionEnd>remove_red_eye</mat-icon>
-            </button>
-        </div>
-        <div class="right-content">
-            <div class="button-section">
-                <button mat-flat-button disabled class="topic-button" color="primary">
-                  {{idea.topic}}
-                </button>
-            </div>
-            <div class="like-button-section">
-                <h2 class="centered-h2">{{idea.likes}}</h2>
-                <button mat-fab color="warn" [disabled]="!allowLike" (click)="addLike()">
-                    <mat-icon>thumb_up</mat-icon>
-                </button>
-            </div>
-        </div>
-    </mat-card-content>
+  <mat-card-content class="content-container">
+    <div class="left-content">
+      <h2 class="truncate-1-lines">{{idea.title}}</h2>
+      <p class="truncate-3-lines ">{{idea.description}}
+      </p>
+      <button (click)="goToDetail()" *ngIf="showDetailButton" color="primary" mat-button>
+        View details
+        <mat-icon iconPositionEnd>remove_red_eye</mat-icon>
+      </button>
+    </div>
+    <div class="right-content">
+      <div class="button-section">
+        <button class="topic-button" color="primary" disabled mat-flat-button>
+          {{idea.topic}}
+        </button>
+      </div>
+      <div class="like-button-section">
+        <h2 class="centered-h2">{{idea.likes}}</h2>
+        <button (click)="addLike()" [disabled]="!allowLike" color="warn" mat-fab>
+          <mat-icon>thumb_up</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
 </mat-card>
