@@ -2,9 +2,9 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators,} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {snackBarConfig} from '../../core/config/snackBarConfig';
-import {Topics} from "../../core/constants/Topics";
 import {AuthService} from "../../core/services/auth.service";
 import {IdeasService} from "../../core/services/backend/ideas.service";
+import {Idea, Topics} from "../../core/models/Idea";
 import {Idea} from "../../core/models/Idea";
 import {Location} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
@@ -38,7 +38,7 @@ export class EditIdeaComponent {
     this.route.paramMap.subscribe((params) => {
       this.isNewIdea = params.get('id') === null;
     });
-    
+
     this.topics.shift();
   }
 
@@ -73,7 +73,7 @@ export class EditIdeaComponent {
         this.loading = false;
         this.snackBar.open('Idea saved successfully', 'X', {
           ...snackBarConfig,
-          panelClass: ['info-snackbar']
+          panelClass: snackBarConfig.panelClass?.concat('info-snackbar')
         });
       },
       error: (error) => {
