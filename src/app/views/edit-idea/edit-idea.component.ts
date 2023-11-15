@@ -1,12 +1,13 @@
 import {Component} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators,} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import {Router} from '@angular/router';
 import {snackBarConfig} from '../../core/config/snackBarConfig';
 import {Topics} from "../../core/constants/Topics";
 import {AuthService} from "../../core/services/auth.service";
 import {IdeasService} from "../../core/services/backend/ideas.service";
 import {Idea} from "../../core/models/Idea";
+import {Location} from "@angular/common";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-edit-idea',
@@ -22,7 +23,8 @@ export class EditIdeaComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
+    private location: Location,
+    private route: ActivatedRoute,
     private authService: AuthService,
     private ideasService: IdeasService,
     private snackBar: MatSnackBar
@@ -33,12 +35,15 @@ export class EditIdeaComponent {
       topic: new FormControl('', [Validators.required]),
     });
 
-    this.isNewIdea = this.router.url === '/publishIdea';
+    this.route.paramMap.subscribe((params) => {
+      this.isNewIdea = params.get('id') === null;
+    });
+    
     this.topics.shift();
   }
 
   goBack() {
-    this.router.navigate(['']);
+    this.location.back();
   }
 
   isFormValid() {
