@@ -1,9 +1,12 @@
+import {User} from "./User";
+
 export class Idea {
     description?: string;
     updated_date?: Date;
     likes?: number;
     title?: string;
     userId?: string;
+    user?: User;
     topic?: Topics;
     id?: string;
 
