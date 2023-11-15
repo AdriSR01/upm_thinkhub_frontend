@@ -67,7 +67,7 @@ export class EditIdeaComponent {
         this.loading = false;
         this.snackBar.open('Idea saved successfully', 'X', {
           ...snackBarConfig,
-          panelClass: ['info-snackbar']
+          panelClass: snackBarConfig.panelClass?.concat('info-snackbar')
         });
       },
       error: (error) => {
