@@ -5,7 +5,6 @@ import {snackBarConfig} from '../../core/config/snackBarConfig';
 import {AuthService} from "../../core/services/auth.service";
 import {IdeasService} from "../../core/services/backend/ideas.service";
 import {Idea, Topics} from "../../core/models/Idea";
-import {Idea} from "../../core/models/Idea";
 import {Location} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
 
