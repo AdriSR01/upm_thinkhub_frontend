@@ -1,35 +1,54 @@
-import {Component, ViewChild} from '@angular/core';
-import {Location} from "@angular/common";
-import {Idea, Topics} from "../../core/models/Idea";
-import {MatTooltip} from "@angular/material/tooltip";
+import { Location } from '@angular/common';
+import { Component, ViewChild } from '@angular/core';
+import { MatTooltip } from '@angular/material/tooltip';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Idea } from '../../core/models/Idea';
+import { AuthService } from '../../core/services/auth.service';
+import { IdeasService } from '../../core/services/backend/ideas.service';
 
 @Component({
   selector: 'app-detail-idea',
   templateUrl: './detail-idea.component.html',
-  styleUrls: ['./detail-idea.component.scss']
+  styleUrls: ['./detail-idea.component.scss'],
 })
 export class DetailIdeaComponent {
-
-  idea: Idea = {
-    id: "df77ade7-b134-40e8-9036-b42e2f3238f5",
-    title: "Agile estimation tool",
-    topic: Topics.TECHNOLOGICAL,
-    description: "A desktop application that will estimate the real duration of a sprint based on the velocity of the team and previous data from them",
-    likes: 0,
-    user: {
-      name: 'Adrián',
-      lastName: 'Sánchez',
-      email: 'adri@gmail.com',
-      phoneNumber: '614876987'
-    }
-  };
+  idea: Idea = {};
+  showPublish = false;
+  loading = false;
 
   @ViewChild('emailTooltip') emailTooltip!: MatTooltip;
   @ViewChild('phoneTooltip') phoneTooltip!: MatTooltip;
+  constructor(
+    private location: Location,
+    private router: Router,
+    private authService: AuthService,
+    private ideasService: IdeasService,
+    private route: ActivatedRoute
+  ) {
+    this.showPublish = this.authService.user !== undefined;
+    this.authService.loggedEvent.subscribe(() => {
+      this.showPublish = this.authService.user !== undefined;
+    });
 
-  loading = false;
+    this.getIdea();
+  }
 
-  constructor(private location: Location) {
+  private getIdea() {
+    this.loading = true;
+    const ideaId = this.route.snapshot.paramMap.get('id');
+    if (ideaId) {
+      this.ideasService.getIdeaById(ideaId).subscribe({
+        next: (idea: Idea) => {
+          this.idea = idea;
+          this.loading = false;
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+    } else {
+      console.error('The id was not provided');
+    }
   }
 
   ngOnInit() {
@@ -43,11 +62,11 @@ export class DetailIdeaComponent {
 
   copy(text: string, tooltip: MatTooltip) {
     navigator.clipboard.writeText(text ?? '');
-    tooltip.disabled = false
+    tooltip.disabled = false;
     tooltip.show();
     setTimeout(() => {
       tooltip.hide();
       tooltip.disabled = true;
-    }, 1000)
+    }, 1000);
   }
 }

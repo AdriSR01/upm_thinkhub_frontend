@@ -1,15 +1,14 @@
-import {Injectable} from '@angular/core';
-import {ApiService} from "./api.service";
-import {Observable} from "rxjs";
-import {HttpParams, HttpResponse} from "@angular/common/http";
-import {Idea} from "../../models/Idea";
-import {SortOrder} from "../../types";
+import { HttpParams, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Idea } from '../../models/Idea';
+import { SortOrder } from '../../types';
+import { ApiService } from './api.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class IdeasService extends ApiService {
-
   readonly SERVICE_NAME = 'ideas';
 
   createIdea(idea: Idea): Observable<HttpResponse<any>> {
@@ -20,11 +19,11 @@ export class IdeasService extends ApiService {
     let queryParams = new HttpParams();
 
     if (topic) {
-      queryParams = queryParams.append("topic", topic);
+      queryParams = queryParams.append('topic', topic);
     }
 
     if (sortOder) {
-      queryParams = queryParams.append("sortByLikes", sortOder);
+      queryParams = queryParams.append('sortByLikes', sortOder);
     }
 
     return this.get<Idea[]>(this.SERVICE_NAME, queryParams);
@@ -32,5 +31,9 @@ export class IdeasService extends ApiService {
 
   addLike(id: string): Observable<HttpResponse<any>> {
     return this.patch(`${this.SERVICE_NAME}/likeIdea/${id}`);
+  }
+
+  getIdeaById(ideaId: string): Observable<Idea> {
+    return this.get<Idea>(`${this.SERVICE_NAME}/${ideaId}`);
   }
 }
