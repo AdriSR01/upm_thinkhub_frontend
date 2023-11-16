@@ -1,10 +1,10 @@
-import { Location } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
-import { MatTooltip } from '@angular/material/tooltip';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Idea } from '../../core/models/Idea';
-import { AuthService } from '../../core/services/auth.service';
-import { IdeasService } from '../../core/services/backend/ideas.service';
+import {Location} from '@angular/common';
+import {Component, ViewChild} from '@angular/core';
+import {MatTooltip} from '@angular/material/tooltip';
+import {ActivatedRoute} from '@angular/router';
+import {Idea} from '../../core/models/Idea';
+import {AuthService} from '../../core/services/auth.service';
+import {IdeasService} from '../../core/services/backend/ideas.service';
 
 @Component({
   selector: 'app-detail-idea',
@@ -18,9 +18,9 @@ export class DetailIdeaComponent {
 
   @ViewChild('emailTooltip') emailTooltip!: MatTooltip;
   @ViewChild('phoneTooltip') phoneTooltip!: MatTooltip;
+
   constructor(
     private location: Location,
-    private router: Router,
     private authService: AuthService,
     private ideasService: IdeasService,
     private route: ActivatedRoute
@@ -31,6 +31,20 @@ export class DetailIdeaComponent {
     });
 
     this.getIdea();
+  }
+
+  goBack() {
+    this.location.back();
+  }
+
+  copy(text: string, tooltip: MatTooltip) {
+    navigator.clipboard.writeText(text ?? '');
+    tooltip.disabled = false;
+    tooltip.show();
+    setTimeout(() => {
+      tooltip.hide();
+      tooltip.disabled = true;
+    }, 1000);
   }
 
   private getIdea() {
@@ -46,27 +60,6 @@ export class DetailIdeaComponent {
           console.log(error);
         },
       });
-    } else {
-      console.error('The id was not provided');
     }
-  }
-
-  ngOnInit() {
-    this.emailTooltip.disabled = true;
-    this.phoneTooltip.disabled = true;
-  }
-
-  goBack() {
-    this.location.back();
-  }
-
-  copy(text: string, tooltip: MatTooltip) {
-    navigator.clipboard.writeText(text ?? '');
-    tooltip.disabled = false;
-    tooltip.show();
-    setTimeout(() => {
-      tooltip.hide();
-      tooltip.disabled = true;
-    }, 1000);
   }
 }
