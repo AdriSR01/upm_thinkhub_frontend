@@ -29,6 +29,5 @@ jobs:
         with:
           branch: gh-pages
           folder: dist/upm_thinkhub_frontend
-          build_dir: dist/upm_thinkhub_frontend
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TOKEN }}
+          clean: true
