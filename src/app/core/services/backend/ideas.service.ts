@@ -37,7 +37,7 @@ export class IdeasService extends ApiService {
     return this.get<Idea>(`${this.SERVICE_NAME}/${ideaId}`);
   }
 
-  updateIdeaById(idea: Idea): Observable<HttpResponse<any>> {
+  updateIdea(idea: Idea): Observable<HttpResponse<any>> {
     return this.put(`${this.SERVICE_NAME}/idea/${idea.id}`, idea);
   }
 }
