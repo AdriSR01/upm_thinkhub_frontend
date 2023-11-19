@@ -9,7 +9,9 @@
       </button>
     </div>
     <!--Idea-->
-    <app-idea-item [idea]="idea" [showDetailButton]="false">
+    <app-idea-item
+      [idea]="idea"
+      [showDetailButton]="false">
     </app-idea-item>
     <!--User info-->
     <mat-card class="user-card">
@@ -24,8 +26,13 @@
             <p class="field-name">Email</p>
             <div class="field-value">
               {{idea.user?.email}}
-              <button #emailTooltip="matTooltip" (click)="copy(idea.user?.email!, emailTooltip)" mat-icon-button
-                matTooltip="Copied" matTooltipDisabled="true" matTooltipPosition="below">
+              <button
+                #emailTooltip="matTooltip"
+                (click)="copy(idea.user?.email!, emailTooltip)"
+                mat-icon-button
+                matTooltip="Copied"
+                matTooltipDisabled="true"
+                matTooltipPosition="below">
                 <mat-icon>content_copy</mat-icon>
               </button>
             </div>
@@ -34,8 +41,13 @@
             <p class="field-name">Phone</p>
             <div class="field-value">
               {{idea.user?.phoneNumber}}
-              <button #phoneTooltip="matTooltip" (click)="copy(idea.user?.phoneNumber!, phoneTooltip)" mat-icon-button
-                matTooltip="Copied" matTooltipDisabled="true" matTooltipPosition="below">
+              <button
+                #phoneTooltip="matTooltip"
+                (click)="copy(idea.user?.phoneNumber!, phoneTooltip)"
+                mat-icon-button
+                matTooltip="Copied"
+                matTooltipDisabled="true"
+                matTooltipPosition="below">
                 <mat-icon>content_copy</mat-icon>
               </button>
             </div>
@@ -56,6 +68,14 @@
         Add new comment
       </button>
     </div>
-    <!-- List comments -->
+    <!--Comments list-->
+    <mat-card class="comment-card" *ngFor="let comment of idea.comments">
+      <mat-card-header>
+        <p class="time-text">{{comment.timeSince}}</p>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="comment-text">{{comment.comment}}</p>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
