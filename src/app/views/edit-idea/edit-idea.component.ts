@@ -7,6 +7,8 @@ import {IdeasService} from "../../core/services/backend/ideas.service";
 import {Idea, Topics} from "../../core/models/Idea";
 import {Location} from "@angular/common";
 import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
+import {HttpResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-edit-idea',
@@ -79,18 +81,27 @@ export class EditIdeaComponent {
 
   onSubmit() {
     const idea: Idea = {
+      id: this.idea?.id,
       title: this.form.controls['title'].value,
       topic: this.form.controls['topic'].value,
       description: this.form.controls['description'].value,
       userId: this.authService.user.id,
     };
 
-    this.isNewIdea ? this.publishIdea(idea) : this.saveIdea(idea);
+    this.storeIdea(idea);
   }
 
-  publishIdea(idea: Idea) {
+  storeIdea(idea: Idea) {
+    let observable: Observable<HttpResponse<any>>;
+
+    if (this.isNewIdea) {
+      observable = this.ideasService.createIdea(idea);
+    } else {
+      observable = this.ideasService.updateIdea(idea);
+    }
+
     this.loading = true;
-    this.ideasService.createIdea(idea).subscribe({
+    observable.subscribe({
       next: () => {
         this.form.reset();
         this.loading = false;
@@ -103,9 +114,5 @@ export class EditIdeaComponent {
         console.log(error);
       },
     });
-  }
-
-  saveIdea(idea: Idea) {
-    // TODO: Save changes of an idea
   }
 }
