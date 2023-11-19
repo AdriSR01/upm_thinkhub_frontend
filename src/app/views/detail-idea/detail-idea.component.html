@@ -56,12 +56,12 @@
       </mat-card-content>
     </mat-card>
     <!--Comments list-->
-    <mat-card class="comment-card">
+    <mat-card class="comment-card" *ngFor="let comment of idea.comments">
       <mat-card-header>
-        <p class="time-text">1 hour ago</p>
+        <p class="time-text">{{comment.timeSince}}</p>
       </mat-card-header>
       <mat-card-content>
-        <p class="comment-text">Comment text</p>
+        <p class="comment-text">{{comment.comment}}</p>
       </mat-card-content>
     </mat-card>
   </div>
