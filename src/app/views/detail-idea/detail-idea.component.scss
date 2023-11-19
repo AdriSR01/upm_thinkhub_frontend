@@ -115,3 +115,34 @@ mat-icon {
   padding: 0;
 }
 
+.section-title{
+  font-weight: bold;
+}
+
+.comment-title-container{
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.field-container{
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+}
+
+.add-button-container{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.add-button {
+  border: none;
+  border-radius: 36px;
+  margin: 10px;
+  padding: 20px 25px 20px 25px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 36px;
+}
