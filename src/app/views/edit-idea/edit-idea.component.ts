@@ -20,6 +20,8 @@ export class EditIdeaComponent {
 
   loading = false;
 
+  idea?: Idea;
+
   constructor(
     private formBuilder: FormBuilder,
     private location: Location,
@@ -36,6 +38,23 @@ export class EditIdeaComponent {
 
     this.route.paramMap.subscribe((params) => {
       this.isNewIdea = params.get('id') === null;
+
+      if (!this.isNewIdea) {
+        this.loading = true;
+        this.ideasService.getIdeaById(params.get('id')!).subscribe({
+          next: (idea: Idea) => {
+            this.idea = idea;
+            this.form.controls['title'].setValue(idea.title);
+            this.form.controls['description'].setValue(idea.description);
+            this.form.controls['topic'].setValue(idea.topic);
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        }).add(() => {
+          this.loading = false;
+        });
+      }
     });
 
     this.topics.shift();
@@ -49,7 +68,12 @@ export class EditIdeaComponent {
     return (
       !this.form.controls['title'].invalid &&
       !this.form.controls['description'].invalid &&
-      !this.form.controls['topic'].invalid
+      !this.form.controls['topic'].invalid &&
+      (this.isNewIdea ||
+        this.form.controls['title'].value.trim() !== this.idea?.title ||
+        this.form.controls['description'].value.trim() !== this.idea?.description ||
+        this.form.controls['topic'].value !== this.idea?.topic
+      )
     );
   }
 
