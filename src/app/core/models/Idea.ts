@@ -1,23 +1,26 @@
 import {User} from "./User";
+import {Comment} from "./Comment";
 
 export class Idea {
-    description?: string;
-    updated_date?: Date;
-    likes?: number;
-    title?: string;
-    userId?: string;
-    user?: User;
-    topic?: Topics;
-    id?: string;
+  description?: string;
+  updated_date?: Date;
+  likes?: number;
+  title?: string;
+  userId?: string;
+  user?: User;
+  topic?: Topics;
+  comments?: Comment[];
+  id?: string;
 
-    [index: string]: any;
-    constructor(jsonStr: string) {
-        const jsonObj: any = JSON.parse(jsonStr);
+  [index: string]: any;
 
-        Object.keys(jsonObj).forEach(key => {
-            this[key] = jsonObj[key];
-        });
-    }
+  constructor(jsonStr: string) {
+    const jsonObj: any = JSON.parse(jsonStr);
+
+    Object.keys(jsonObj).forEach(key => {
+      this[key] = jsonObj[key];
+    });
+  }
 }
 
 export enum Topics {

@@ -1,10 +1,10 @@
-import {Location} from '@angular/common';
-import {Component, ViewChild} from '@angular/core';
-import {MatTooltip} from '@angular/material/tooltip';
-import {ActivatedRoute} from '@angular/router';
-import {Idea} from '../../core/models/Idea';
-import {AuthService} from '../../core/services/auth.service';
-import {IdeasService} from '../../core/services/backend/ideas.service';
+import { Location } from '@angular/common';
+import { Component, ViewChild } from '@angular/core';
+import { MatTooltip } from '@angular/material/tooltip';
+import { ActivatedRoute } from '@angular/router';
+import { Idea } from '../../core/models/Idea';
+import { AuthService } from '../../core/services/auth.service';
+import { IdeasService } from '../../core/services/backend/ideas.service';
 
 @Component({
   selector: 'app-detail-idea',
@@ -15,6 +15,7 @@ export class DetailIdeaComponent {
   idea: Idea = {};
   showPublish = false;
   loading = false;
+  commentContent = "";
 
   @ViewChild('emailTooltip') emailTooltip!: MatTooltip;
   @ViewChild('phoneTooltip') phoneTooltip!: MatTooltip;
@@ -45,6 +46,17 @@ export class DetailIdeaComponent {
       tooltip.hide();
       tooltip.disabled = true;
     }, 1000);
+  }
+
+  onSubmitComment(){
+    // TODO: Save comment in DB
+
+    // Clear textarea content
+    this.commentContent = "";
+  }
+
+  isCommentWritten(){
+    return this.commentContent.trim() !== "";
   }
 
   private getIdea() {
