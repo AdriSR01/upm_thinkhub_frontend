@@ -49,7 +49,6 @@ export class DetailIdeaComponent {
   }
 
   onSubmitComment(){
-    console.log(`Comentario: ${this.commentContent}`);
     // TODO: Save comment in DB
 
     // Clear textarea content
@@ -57,7 +56,7 @@ export class DetailIdeaComponent {
   }
 
   isCommentWritten(){
-    return this.commentContent !== "";
+    return this.commentContent.trim() !== "";
   }
 
   private getIdea() {
