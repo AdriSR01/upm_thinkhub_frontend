@@ -1,7 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ActivatedRoute } from '@angular/router';
+import { snackBarConfig } from 'src/app/core/config/snackBarConfig';
+import { Comment } from 'src/app/core/models/Comment';
+import { CommentsService } from 'src/app/core/services/backend/comments.service';
 import { Idea } from '../../core/models/Idea';
 import { AuthService } from '../../core/services/auth.service';
 import { IdeasService } from '../../core/services/backend/ideas.service';
@@ -24,7 +28,9 @@ export class DetailIdeaComponent {
     private location: Location,
     private authService: AuthService,
     private ideasService: IdeasService,
-    private route: ActivatedRoute
+    private commentsService: CommentsService,
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {
     this.showPublish = this.authService.user !== undefined;
     this.authService.loggedEvent.subscribe(() => {
@@ -49,10 +55,24 @@ export class DetailIdeaComponent {
   }
 
   onSubmitComment(){
-    // TODO: Save comment in DB
+    const comment: Comment = {
+      comment: this.commentContent.trim()
+    };
 
-    // Clear textarea content
-    this.commentContent = "";
+    this.loading = true;
+    this.commentsService.createComment(comment, this.idea.id!).subscribe({
+      next: () => {
+        this.commentContent = "";
+        this.loading = false;
+        this.snackBar.open('Comment saved successfully', 'X', {
+          ...snackBarConfig,
+          panelClass: snackBarConfig.panelClass?.concat('info-snackbar')
+        });
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
   }
 
   isCommentWritten(){
