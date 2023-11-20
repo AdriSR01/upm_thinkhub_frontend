@@ -1,10 +1,13 @@
 <mat-card class="idea-card">
   <mat-card-content class="content-container">
     <div class="left-content">
-      <h2 class="truncate-1-lines">{{idea.title}}</h2>
-      <p class="truncate-3-lines ">{{idea.description}}
-      </p>
-      <button (click)="goToDetail()" *ngIf="showDetailButton" color="primary" mat-button>
+      <h2 class="truncate-1-lines" [ngStyle]="{
+        '-webkit-line-clamp': isNotDetail ?  1 : 'none'
+      }">{{idea.title}}</h2>
+      <p class="truncate-3-lines" [ngStyle]="{
+        '-webkit-line-clamp': isNotDetail ?  3 : 'none'
+      }">{{idea.description}}</p>
+      <button (click)="goToDetail()" *ngIf="isNotDetail" color="primary" mat-button>
         View details
         <mat-icon iconPositionEnd>remove_red_eye</mat-icon>
       </button>
