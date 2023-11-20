@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class IdeaItemComponent {
   @Input() idea!: Idea;
-  @Input() showDetailButton = true;
+  @Input() isNotDetail = true;
 
   allowLike = true;
 
