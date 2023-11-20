@@ -11,7 +11,7 @@
     <!--Idea-->
     <app-idea-item
       [idea]="idea"
-      [showDetailButton]="false">
+      [isNotDetail]="false">
     </app-idea-item>
     <!--User info-->
     <mat-card class="user-card">
@@ -64,7 +64,7 @@
     </mat-form-field>
     <div class="add-button-container">
       <button mat-flat-button type="submit" color="primary" class="add-button" (click)="onSubmitComment()"
-        [disabled]="!isCommentWritten()">
+              [disabled]="!isCommentWritten()">
         Add new comment
       </button>
     </div>
