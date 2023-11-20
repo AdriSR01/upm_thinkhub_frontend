@@ -10,14 +10,12 @@
 
 .truncate-3-lines {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 .truncate-1-lines {
   display: -webkit-box;
-  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -59,12 +57,12 @@ button.topic-button:disabled {
 }
 
 .left-content {
-  flex: 1;
+  flex: 80%;
   padding: 20px;
 }
 
 .right-content {
-  flex: 1;
+  flex: 20%;
   padding: 20px;
 }
 

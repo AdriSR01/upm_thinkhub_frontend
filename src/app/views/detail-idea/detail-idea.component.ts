@@ -1,14 +1,14 @@
-import { Location } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTooltip } from '@angular/material/tooltip';
-import { ActivatedRoute } from '@angular/router';
-import { snackBarConfig } from 'src/app/core/config/snackBarConfig';
-import { Comment } from 'src/app/core/models/Comment';
-import { CommentsService } from 'src/app/core/services/backend/comments.service';
-import { Idea } from '../../core/models/Idea';
-import { AuthService } from '../../core/services/auth.service';
-import { IdeasService } from '../../core/services/backend/ideas.service';
+import {Location} from '@angular/common';
+import {Component, ViewChild} from '@angular/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatTooltip} from '@angular/material/tooltip';
+import {ActivatedRoute} from '@angular/router';
+import {snackBarConfig} from 'src/app/core/config/snackBarConfig';
+import {Comment} from 'src/app/core/models/Comment';
+import {CommentsService} from 'src/app/core/services/backend/comments.service';
+import {Idea} from '../../core/models/Idea';
+import {AuthService} from '../../core/services/auth.service';
+import {IdeasService} from '../../core/services/backend/ideas.service';
 
 @Component({
   selector: 'app-detail-idea',
@@ -54,17 +54,15 @@ export class DetailIdeaComponent {
     }, 1000);
   }
 
-  onSubmitComment(){
+  onSubmitComment() {
     const comment: Comment = {
       comment: this.commentContent.trim()
     };
 
-    this.loading = true;
     this.commentsService.createComment(comment, this.idea.id!).subscribe({
-      next: (newComment) => {
+      next: (newComment: Comment) => {
         this.commentContent = "";
         this.idea.comments?.unshift(newComment);
-        this.loading = false;
         this.snackBar.open('Comment saved successfully', 'X', {
           ...snackBarConfig,
           panelClass: snackBarConfig.panelClass?.concat('info-snackbar')
@@ -76,7 +74,7 @@ export class DetailIdeaComponent {
     });
   }
 
-  isCommentWritten(){
+  isCommentWritten() {
     return this.commentContent.trim() !== "";
   }
 
