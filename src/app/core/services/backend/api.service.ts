@@ -22,4 +22,8 @@ export class ApiService {
   patch<T>(endpoint: string, body?: any): Observable<T> {
     return this.http.patch<T>(`${this.ENDPOINT}/${endpoint}`, body);
   }
+
+  put<T>(endpoint: string, body: any): Observable<T> {
+    return this.http.put<T>(`${this.ENDPOINT}/${endpoint}`, body);
+  }
 }
