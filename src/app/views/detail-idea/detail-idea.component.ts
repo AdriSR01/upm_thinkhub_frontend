@@ -61,9 +61,9 @@ export class DetailIdeaComponent {
 
     this.loading = true;
     this.commentsService.createComment(comment, this.idea.id!).subscribe({
-      next: () => {
+      next: (newComment) => {
         this.commentContent = "";
-        this.getIdea();
+        this.idea.comments?.unshift(newComment);
         this.loading = false;
         this.snackBar.open('Comment saved successfully', 'X', {
           ...snackBarConfig,
