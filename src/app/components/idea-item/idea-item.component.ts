@@ -15,6 +15,7 @@ export class IdeaItemComponent implements OnInit {
 
   hasLike = false;
   disabledButton = false;
+  loading = false;
 
   constructor(private ideasService: IdeasService,
               private likesService: LikesService,
@@ -27,7 +28,9 @@ export class IdeaItemComponent implements OnInit {
   }
 
   likeAction() {
+    this.loading = true;
     if (this.hasLike) {
+      this.loading = false;
       this.idea.likes!--;
       this.likesService.removeLike(this.idea.id!);
     } else {
@@ -35,6 +38,7 @@ export class IdeaItemComponent implements OnInit {
         next: (idea: Idea) => {
           this.idea = idea;
           this.likesService.addLike(idea.id!);
+          this.loading = false;
         },
         error: (error) => {
           console.log(error);
