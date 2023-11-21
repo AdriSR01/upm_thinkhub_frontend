@@ -26,17 +26,23 @@ export class IdeaItemComponent implements OnInit {
     this.disabledButton = this.hasLike;
   }
 
-  addLike() {
-    this.hasLike = true;
-    this.ideasService.addLike(this.idea.id!).subscribe({
-      next: (idea: Idea) => {
-        this.idea = idea;
-        this.likesService.addLike(idea.id!);
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    })
+  likeAction() {
+    if (this.hasLike) {
+      this.idea.likes!--;
+      this.likesService.removeLike(this.idea.id!);
+    } else {
+      this.ideasService.addLike(this.idea.id!).subscribe({
+        next: (idea: Idea) => {
+          this.idea = idea;
+          this.likesService.addLike(idea.id!);
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+    }
+    this.hasLike = !this.hasLike;
+    this.disabledButton = this.hasLike;
   }
 
   goToDetail() {
