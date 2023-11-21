@@ -13,7 +13,8 @@ export class IdeaItemComponent implements OnInit {
   @Input() idea!: Idea;
   @Input() isNotDetail = true;
 
-  allowLike = true;
+  hasLike = false;
+  disabledButton = false;
 
   constructor(private ideasService: IdeasService,
               private likesService: LikesService,
@@ -21,11 +22,12 @@ export class IdeaItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.allowLike = !this.likesService.hasLike(this.idea.id!);
+    this.hasLike = this.likesService.hasLike(this.idea.id!);
+    this.disabledButton = this.hasLike;
   }
 
   addLike() {
-    this.allowLike = false;
+    this.hasLike = true;
     this.ideasService.addLike(this.idea.id!).subscribe({
       next: (idea: Idea) => {
         this.idea = idea;
