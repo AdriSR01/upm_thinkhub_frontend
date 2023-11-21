@@ -59,9 +59,9 @@ export class DetailIdeaComponent {
       comment: this.commentContent.trim()
     };
 
+    this.commentContent = "";
     this.commentsService.createComment(comment, this.idea.id!).subscribe({
       next: (newComment: Comment) => {
-        this.commentContent = "";
         this.idea.comments?.unshift(newComment);
         this.snackBar.open('Comment saved successfully', 'X', {
           ...snackBarConfig,
