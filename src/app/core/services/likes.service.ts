@@ -7,14 +7,11 @@ export class LikesService {
 
   private readonly ideasWithLike = new Map<string, undefined>();
 
-  private readonly ideasIds: string[] = [];
-
   constructor() {
     const ideasStored = localStorage.getItem('ideasWithLike');
 
     if (ideasStored !== null) {
-      this.ideasIds = JSON.parse(ideasStored);
-      this.ideasIds.forEach((ideaId: string) => {
+      JSON.parse(ideasStored).forEach((ideaId: string) => {
         this.ideasWithLike.set(ideaId, undefined);
       });
     }
@@ -22,12 +19,15 @@ export class LikesService {
 
   addLike(ideaId: string) {
     this.ideasWithLike.set(ideaId, undefined);
-    this.ideasIds.push(ideaId);
 
-    localStorage.setItem('ideasWithLike', JSON.stringify(this.ideasIds));
+    localStorage.setItem('ideasWithLike', JSON.stringify([...this.ideasWithLike.keys()]));
   }
 
   hasLike(ideaId: string) {
     return this.ideasWithLike.has(ideaId);
+  }
+
+  removeLike(ideaId: string) {
+    this.ideasWithLike.delete(ideaId);
   }
 }
