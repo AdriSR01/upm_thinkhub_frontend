@@ -29,8 +29,12 @@ export class IdeasService extends ApiService {
     return this.get<Idea[]>(this.SERVICE_NAME, queryParams);
   }
 
-  addLike(id: string): Observable<HttpResponse<any>> {
-    return this.patch(`${this.SERVICE_NAME}/likeIdea/${id}`);
+  addLike(id: string): Observable<Idea> {
+    return this.patch<Idea>(`${this.SERVICE_NAME}/likeIdea/${id}`);
+  }
+
+  removeLike(id: string): Observable<Idea> {
+    return this.patch<Idea>(`${this.SERVICE_NAME}/dislikeIdea/${id}`);
   }
 
   getIdeaById(ideaId: string): Observable<Idea> {
