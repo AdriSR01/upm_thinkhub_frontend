@@ -33,22 +33,20 @@ export class IdeaItemComponent implements OnInit {
 
   likeAction() {
     this.loading = true;
-    if (this.hasLike) {
-      this.loading = false;
-      this.idea.likes!--;
-      this.likesService.removeLike(this.idea.id!);
-    } else {
-      this.ideasService.addLike(this.idea.id!).subscribe({
-        next: (idea: Idea) => {
-          this.idea = idea;
-          this.likesService.addLike(idea.id!);
-          this.loading = false;
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
-    }
+
+    this.hasLike ? this.likesService.removeLike(this.idea.id!) : this.likesService.addLike(this.idea.id!);
+
+    const observable = this.hasLike ? this.ideasService.removeLike(this.idea.id!) : this.ideasService.addLike(this.idea.id!);
+
+    observable.subscribe({
+      next: (idea: Idea) => {
+        this.idea = idea;
+        this.loading = false;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
     this.hasLike = !this.hasLike;
     this.disabledButton = this.hasLike;
   }
