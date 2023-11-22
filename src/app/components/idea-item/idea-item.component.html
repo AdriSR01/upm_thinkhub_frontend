@@ -7,10 +7,17 @@
       <p class="truncate-3-lines" [ngStyle]="{
         '-webkit-line-clamp': isNotDetail ?  3 : 'none'
       }">{{idea.description}}</p>
-      <button (click)="goToDetail()" *ngIf="isNotDetail" color="primary" mat-button>
-        View details
-        <mat-icon iconPositionEnd>remove_red_eye</mat-icon>
-      </button>
+      <div class="left-button-section">
+        <button (click)="goToDetail()" *ngIf="isNotDetail" color="primary" mat-button>
+          View details
+          <mat-icon iconPositionEnd>remove_red_eye</mat-icon>
+        </button>
+        <button *ngIf="showEditIdeaButton" color="primary" mat-button>
+          Edit Idea
+          <mat-icon iconPositionEnd>edit</mat-icon>
+        </button>
+        <p *ngIf="showModificationDate">Last modification: dd/mm/yyyy</p>
+      </div>
     </div>
     <div class="right-content">
       <div class="button-section">

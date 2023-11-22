@@ -66,6 +66,15 @@ button.topic-button:disabled {
   padding: 20px;
 }
 
+.left-button-section {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .button-section {
   position: absolute;
   top: 30px;

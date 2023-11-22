@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Idea} from 'src/app/core/models/Idea';
-import {IdeasService} from "../../core/services/backend/ideas.service";
-import {Router} from "@angular/router";
-import {LikesService} from "../../core/services/likes.service";
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Idea } from 'src/app/core/models/Idea';
+import { IdeasService } from '../../core/services/backend/ideas.service';
+import { LikesService } from '../../core/services/likes.service';
 
 @Component({
   selector: 'app-idea-item',
@@ -12,15 +12,18 @@ import {LikesService} from "../../core/services/likes.service";
 export class IdeaItemComponent implements OnInit {
   @Input() idea!: Idea;
   @Input() isNotDetail = true;
+  @Input() showEditIdeaButton: boolean = false;
+  @Input() showModificationDate: boolean = false;
 
   hasLike = false;
   disabledButton = false;
   loading = false;
 
-  constructor(private ideasService: IdeasService,
-              private likesService: LikesService,
-              private router: Router) {
-  }
+  constructor(
+    private ideasService: IdeasService,
+    private likesService: LikesService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.hasLike = this.likesService.hasLike(this.idea.id!);
