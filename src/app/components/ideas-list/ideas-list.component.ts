@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {Router} from '@angular/router';
-import {Idea, Topics} from '../../core/models/Idea';
-import {AuthService} from '../../core/services/auth.service';
-import {IdeasService} from '../../core/services/backend/ideas.service';
-import {SortOrder} from "../../core/types";
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { Idea, Topics } from '../../core/models/Idea';
+import { AuthService } from '../../core/services/auth.service';
+import { IdeasService } from '../../core/services/backend/ideas.service';
+import { SortOrder } from '../../core/types';
 
 @Component({
   selector: 'app-ideas-list',
@@ -13,6 +13,9 @@ import {SortOrder} from "../../core/types";
 export class IdeasListComponent {
   ideas: Idea[] = [];
   topics: Topics[] = Object.values(Topics);
+  @Input() showFilters: boolean = false;
+  @Input() showEditIdeaButton: boolean = false;
+  @Input() showModificationDate: boolean = false;
 
   showPublish = false;
   loading = false;
@@ -35,7 +38,8 @@ export class IdeasListComponent {
   }
 
   private getIdeas() {
-    const topic = this.topicSelected !== Topics.ALL ? this.topicSelected : undefined;
+    const topic =
+      this.topicSelected !== Topics.ALL ? this.topicSelected : undefined;
 
     this.loading = true;
     this.ideasService.getAllIdeas(topic, this.sortOrder).subscribe({
@@ -60,4 +64,3 @@ export class IdeasListComponent {
     this.getIdeas();
   }
 }
-
