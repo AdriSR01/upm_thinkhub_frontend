@@ -1,8 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Idea } from 'src/app/core/models/Idea';
-import { IdeasService } from '../../core/services/backend/ideas.service';
-import { LikesService } from '../../core/services/likes.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {Idea} from 'src/app/core/models/Idea';
+import {IdeasService} from '../../core/services/backend/ideas.service';
+import {LikesService} from '../../core/services/likes.service';
 
 @Component({
   selector: 'app-idea-item',
@@ -23,7 +23,8 @@ export class IdeaItemComponent implements OnInit {
     private ideasService: IdeasService,
     private likesService: LikesService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.hasLike = this.likesService.hasLike(this.idea.id!);
@@ -54,5 +55,9 @@ export class IdeaItemComponent implements OnInit {
 
   goToDetail() {
     this.router.navigate([`detailsIdea/${this.idea.id}`]);
+  }
+
+  goToEdit() {
+    this.router.navigate([`editIdea/${this.idea.id}`]);
   }
 }
