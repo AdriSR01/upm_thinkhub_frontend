@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { Idea, Topics } from '../../core/models/Idea';
-import { AuthService } from '../../core/services/auth.service';
-import { IdeasService } from '../../core/services/backend/ideas.service';
-import { SortOrder } from '../../core/types';
+import {Component, Input} from '@angular/core';
+import {Router} from '@angular/router';
+import {Idea, Topics} from '../../core/models/Idea';
+import {AuthService} from '../../core/services/auth.service';
+import {IdeasService} from '../../core/services/backend/ideas.service';
+import {SortOrder} from '../../core/types';
 
 @Component({
   selector: 'app-ideas-list',
@@ -13,7 +13,7 @@ import { SortOrder } from '../../core/types';
 export class IdeasListComponent {
   ideas: Idea[] = [];
   topics: Topics[] = Object.values(Topics);
-  @Input() showFilters: boolean = false;
+  @Input() showFilters: boolean = true;
   @Input() showEditIdeaButton: boolean = false;
   @Input() showModificationDate: boolean = false;
 

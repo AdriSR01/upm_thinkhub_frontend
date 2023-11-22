@@ -16,7 +16,7 @@
           Edit Idea
           <mat-icon iconPositionEnd>edit</mat-icon>
         </button>
-        <p *ngIf="showModificationDate">Last modification: dd/mm/yyyy</p>
+        <p *ngIf="showModificationDate">Last modification: {{idea.lastModifiedDate | date: 'shortDate'}}</p>
       </div>
     </div>
     <div class="right-content">

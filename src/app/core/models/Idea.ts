@@ -3,7 +3,7 @@ import {Comment} from "./Comment";
 
 export class Idea {
   description?: string;
-  updated_date?: Date;
+  lastModifiedDate?: Date;
   likes?: number;
   title?: string;
   userId?: string;
