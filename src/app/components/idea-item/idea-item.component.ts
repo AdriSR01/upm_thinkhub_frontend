@@ -16,7 +16,8 @@ export class IdeaItemComponent implements OnInit {
   @Input() showModificationDate: boolean = false;
 
   hasLike = false;
-  disabledButton = false;
+  onHoverButton = false;
+  likeDelay = true;
   loading = false;
 
   constructor(
@@ -28,7 +29,7 @@ export class IdeaItemComponent implements OnInit {
 
   ngOnInit() {
     this.hasLike = this.likesService.hasLike(this.idea.id!);
-    this.disabledButton = this.hasLike;
+    //this.onHoverButton = this.hasLike;
   }
 
   likeAction() {
@@ -38,17 +39,23 @@ export class IdeaItemComponent implements OnInit {
 
     const observable = this.hasLike ? this.ideasService.removeLike(this.idea.id!) : this.ideasService.addLike(this.idea.id!);
 
+    this.hasLike = !this.hasLike;
+
     observable.subscribe({
       next: (idea: Idea) => {
         this.idea = idea;
         this.loading = false;
+        if (!this.hasLike) {
+          this.likeDelay = false;
+          setTimeout(() => {
+            this.likeDelay = true;
+          }, 5000);
+        }
       },
       error: (error) => {
         console.log(error);
       }
     });
-    this.hasLike = !this.hasLike;
-    this.disabledButton = this.hasLike;
   }
 
   goToDetail() {

@@ -27,14 +27,15 @@
       </div>
       <div class="like-button-section">
         <h2 class="centered-h2">{{idea.likes}}</h2>
-        <div (mouseover)="disabledButton = false"
-             (mouseleave)="disabledButton = hasLike">
+        <div (mouseover)="onHoverButton = true"
+             (mouseleave)="onHoverButton = false">
           <button
             mat-fab
+            [ngClass]="{'button-disabled-color': !hasLike && onHoverButton}"
             color="warn"
-            [disabled]="loading || disabledButton"
+            [disabled]="loading || (!hasLike && !onHoverButton)"
             (click)="likeAction()">
-            <mat-icon>thumb_{{hasLike && !disabledButton ? 'down' : 'up'}}</mat-icon>
+            <mat-icon>thumb_{{(hasLike && onHoverButton) && likeDelay ? 'down' : 'up'}}</mat-icon>
           </button>
         </div>
       </div>
