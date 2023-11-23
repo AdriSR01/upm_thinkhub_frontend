@@ -11,8 +11,7 @@ import { SortOrder } from '../../core/types';
 })
 export class IdeasListComponent {
   @Input() ideas: Idea[] = [];
-  topics: Topics[] = Object.values(Topics);
-  @Input() showFilters: boolean = false;
+  @Input() showFilters: boolean = true;
   @Input() showEditIdeaButton: boolean = false;
   @Input() showModificationDate: boolean = false;
   @Input() loading: boolean = false;
@@ -21,11 +20,15 @@ export class IdeasListComponent {
     topicSelected: Topics;
   }>();
 
+  topics: Topics[] = Object.values(Topics);
   showPublish = false;
   sortOrder?: SortOrder;
   topicSelected: Topics;
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+  ) {
     this.showPublish = this.authService.user !== undefined;
     this.authService.loggedEvent.subscribe(() => {
       this.showPublish = this.authService.user !== undefined;

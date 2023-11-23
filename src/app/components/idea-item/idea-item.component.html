@@ -8,15 +8,15 @@
         '-webkit-line-clamp': isNotDetail ?  3 : 'none'
       }">{{idea.description}}</p>
       <div class="left-button-section">
-        <button (click)="goToDetail()" *ngIf="isNotDetail" color="primary" mat-button>
+        <button *ngIf="isNotDetail" color="primary" mat-button (click)="goToDetail()">
           View details
           <mat-icon iconPositionEnd>remove_red_eye</mat-icon>
         </button>
-        <button (click)="goToEdit()" *ngIf="showEditIdeaButton" color="primary" mat-button>
+        <button *ngIf="showEditIdeaButton" color="primary" mat-button (click)="goToEdit()">
           Edit Idea
           <mat-icon iconPositionEnd>edit</mat-icon>
         </button>
-        <p *ngIf="showModificationDate">Last modification: {{idea.lastModifiedDate|date:'shortDate'}}</p>
+        <p *ngIf="showModificationDate">Last modification: {{idea.lastModifiedDate | date: 'shortDate'}}</p>
       </div>
     </div>
     <div class="right-content">
@@ -27,9 +27,17 @@
       </div>
       <div class="like-button-section">
         <h2 class="centered-h2">{{idea.likes}}</h2>
-        <button (click)="addLike()" [disabled]="!allowLike" color="warn" mat-fab>
-          <mat-icon>thumb_up</mat-icon>
-        </button>
+        <div (mouseover)="onHoverButton = true"
+             (mouseleave)="onHoverButton = false">
+          <button
+            mat-fab
+            [ngClass]="{'button-disabled-color': !hasLike && onHoverButton}"
+            color="warn"
+            [disabled]="loading || (!hasLike && !onHoverButton)"
+            (click)="likeAction()">
+            <mat-icon>thumb_{{(hasLike && onHoverButton) && likeDelay ? 'down' : 'up'}}</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
   </mat-card-content>

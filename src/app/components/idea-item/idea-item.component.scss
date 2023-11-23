@@ -97,3 +97,9 @@ button.topic-button:disabled {
   align-items: center;
   margin: 0;
 }
+
+.button-disabled-color {
+  --mdc-fab-container-color: rgba(0, 0, 0, 0.12);
+  --mdc-fab-icon-color: rgba(0, 0, 0, 0.38);
+  --mat-mdc-fab-color: rgba(0, 0, 0, 0.38);
+}

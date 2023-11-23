@@ -1,6 +1,9 @@
 <div class="list">
   <mat-list *ngIf="!loading">
-    <div class="actions-container" [ngStyle]="{'justify-content': showPublish ? 'space-between' : 'flex-end'}">
+    <div class="actions-container" [ngStyle]="{
+    'justify-content': showPublish ? 'space-between' : 'flex-end',
+    'padding-bottom': showFilters ? '0' : '22px'
+    }">
       <!-- Publish button -->
       <div *ngIf="showPublish">
         <button mat-fab extended color="primary" class="publish-button" (click)="publishIdea()">
@@ -13,11 +16,11 @@
           <h4 class="title-filter">Sort by likes</h4>
           <div>
             <button mat-icon-button (click)="filter('ASC')"
-              [ngStyle]="{'color': sortOrder == 'ASC' ? 'black' : 'gray'}">
+                    [ngStyle]="{'color': sortOrder == 'ASC' ? 'black' : 'gray'}">
               <mat-icon class="icon-button">arrow_upward</mat-icon>
             </button>
             <button mat-icon-button (click)="filter('DESC')"
-              [ngStyle]="{'color': sortOrder == 'DESC' ? 'black' : 'gray'}">
+                    [ngStyle]="{'color': sortOrder == 'DESC' ? 'black' : 'gray'}">
               <mat-icon class="icon-button">arrow_downward</mat-icon>
             </button>
           </div>

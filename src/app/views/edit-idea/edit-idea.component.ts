@@ -6,7 +6,7 @@ import {AuthService} from "../../core/services/auth.service";
 import {IdeasService} from "../../core/services/backend/ideas.service";
 import {Idea, Topics} from "../../core/models/Idea";
 import {Location} from "@angular/common";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Observable} from "rxjs";
 import {HttpResponse} from "@angular/common/http";
 
@@ -27,6 +27,7 @@ export class EditIdeaComponent {
   constructor(
     private formBuilder: FormBuilder,
     private location: Location,
+    private router: Router,
     private route: ActivatedRoute,
     private authService: AuthService,
     private ideasService: IdeasService,
@@ -105,6 +106,7 @@ export class EditIdeaComponent {
       next: () => {
         this.form.reset();
         this.loading = false;
+        this.router.navigate(['myIdeas']);
         this.snackBar.open('Idea saved successfully', 'X', {
           ...snackBarConfig,
           panelClass: snackBarConfig.panelClass?.concat('info-snackbar')

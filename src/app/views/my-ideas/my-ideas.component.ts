@@ -9,22 +9,13 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrls: ['./my-ideas.component.scss'],
 })
 export class MyIdeasComponent {
-  showFilters: boolean = false;
-  showEditIdeaButton: boolean = true;
   loading = false;
   ideas: Idea[] = [];
-  showModificationDate: boolean = true;
-  showPublish = false;
 
   constructor(
     private authService: AuthService,
     private userService: UsersService
   ) {
-    this.showPublish = this.authService.user !== undefined;
-    this.authService.loggedEvent.subscribe(() => {
-      this.showPublish = this.authService.user !== undefined;
-    });
-
     this.getMyIdeas();
   }
 
