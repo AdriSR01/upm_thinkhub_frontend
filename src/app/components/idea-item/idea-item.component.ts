@@ -43,4 +43,8 @@ export class IdeaItemComponent implements OnInit {
   goToDetail() {
     this.router.navigate([`detailsIdea/${this.idea.id}`]);
   }
+
+  goToEdit() {
+    this.router.navigate([`editIdea/${this.idea.id}`]);
+  }
 }

@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+  styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent {
   isLoggedIn: boolean;
@@ -14,8 +14,7 @@ export class NavBarComponent {
   @Output() registerCliked = new EventEmitter();
   @Output() loginCliked = new EventEmitter();
 
-  constructor(private authService: AuthService,
-    private router: Router) {
+  constructor(private authService: AuthService, private router: Router) {
     this.isLoggedIn = this.authService.user !== undefined;
     this.myIdeasSection = this.router.url === 'my-ideas';
 
@@ -33,7 +32,7 @@ export class NavBarComponent {
   }
 
   showMyIdeas() {
-
+    this.router.navigate(['myIdeas']);
   }
 
   logOut() {

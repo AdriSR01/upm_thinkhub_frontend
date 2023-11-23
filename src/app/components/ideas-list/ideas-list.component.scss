@@ -21,7 +21,10 @@
 .ideas-container {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+}
+
+.app-idea-item {
+  margin-bottom: 30px;
 }
 
 .likes-filter {
