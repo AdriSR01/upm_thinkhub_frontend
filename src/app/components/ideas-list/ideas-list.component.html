@@ -38,9 +38,9 @@
         </div>
       </div>
     </div>
-    <div class="ideas-container">
-      <app-idea-item *ngFor="let idea of ideas" [idea]="idea" [showModificationDate]="showModificationDate"
-                     [showEditIdeaButton]="showEditIdeaButton"></app-idea-item>
+    <div class="ideas-container" *ngFor="let idea of ideas">
+      <app-idea-item class="app-idea-item" [idea]="idea" [showModificationDate]="showModificationDate"
+        [showEditIdeaButton]="showEditIdeaButton"></app-idea-item>
     </div>
   </mat-list>
   <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>

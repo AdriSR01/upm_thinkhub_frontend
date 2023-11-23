@@ -1,5 +1,5 @@
-import {User} from "./User";
-import {Comment} from "./Comment";
+import { Comment } from './Comment';
+import { User } from './User';
 
 export class Idea {
   description?: string;
@@ -17,7 +17,7 @@ export class Idea {
   constructor(jsonStr: string) {
     const jsonObj: any = JSON.parse(jsonStr);
 
-    Object.keys(jsonObj).forEach(key => {
+    Object.keys(jsonObj).forEach((key) => {
       this[key] = jsonObj[key];
     });
   }
