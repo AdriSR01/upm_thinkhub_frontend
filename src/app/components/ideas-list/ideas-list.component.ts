@@ -1,8 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Idea, Topics } from '../../core/models/Idea';
 import { AuthService } from '../../core/services/auth.service';
-import { IdeasService } from '../../core/services/backend/ideas.service';
 import { SortOrder } from '../../core/types';
 
 @Component({
@@ -11,46 +10,27 @@ import { SortOrder } from '../../core/types';
   styleUrls: ['./ideas-list.component.scss'],
 })
 export class IdeasListComponent {
-  ideas: Idea[] = [];
+  @Input() ideas: Idea[] = [];
   topics: Topics[] = Object.values(Topics);
   @Input() showFilters: boolean = false;
   @Input() showEditIdeaButton: boolean = false;
   @Input() showModificationDate: boolean = false;
+  @Input() loading: boolean = false;
+  @Output() filterEvent = new EventEmitter<{
+    sortOrder?: SortOrder;
+    topicSelected: Topics;
+  }>();
 
   showPublish = false;
-  loading = false;
   sortOrder?: SortOrder;
   topicSelected: Topics;
 
-  constructor(
-    private router: Router,
-    private authService: AuthService,
-    private ideasService: IdeasService
-  ) {
+  constructor(private router: Router, private authService: AuthService) {
     this.showPublish = this.authService.user !== undefined;
     this.authService.loggedEvent.subscribe(() => {
       this.showPublish = this.authService.user !== undefined;
     });
-
-    this.getIdeas();
-
     this.topicSelected = this.topics[0];
-  }
-
-  private getIdeas() {
-    const topic =
-      this.topicSelected !== Topics.ALL ? this.topicSelected : undefined;
-
-    this.loading = true;
-    this.ideasService.getAllIdeas(topic, this.sortOrder).subscribe({
-      next: (ideas: Idea[]) => {
-        this.ideas = ideas;
-        this.loading = false;
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
   }
 
   publishIdea() {
@@ -61,6 +41,9 @@ export class IdeasListComponent {
     if (sortOrder) {
       this.sortOrder = this.sortOrder === sortOrder ? undefined : sortOrder;
     }
-    this.getIdeas();
+    this.filterEvent.emit({
+      sortOrder: this.sortOrder,
+      topicSelected: this.topicSelected,
+    });
   }
 }

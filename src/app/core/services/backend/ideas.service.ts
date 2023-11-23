@@ -1,9 +1,9 @@
-import {HttpParams, HttpResponse} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {Idea} from '../../models/Idea';
-import {SortOrder} from '../../types';
-import {ApiService} from './api.service';
+import { HttpParams, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Idea } from '../../models/Idea';
+import { SortOrder } from '../../types';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',

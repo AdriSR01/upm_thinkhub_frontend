@@ -27,6 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'myIdeas',
+    canActivate: [notLoggedGuard],
     component: MyIdeasComponent,
   },
 ];
