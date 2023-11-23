@@ -1,3 +1,6 @@
 <div class="home-container">
-  <app-ideas-list [loading]="loading" (filterEvent)="getIdeas($event)"></app-ideas-list>
+  <app-ideas-list (filterEvent)="getIdeas($event)"
+                  [ideas]="ideas"
+                  [loading]="loading">
+  </app-ideas-list>
 </div>

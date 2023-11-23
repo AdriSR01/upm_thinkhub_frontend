@@ -41,16 +41,17 @@ export class IdeaItemComponent implements OnInit {
 
     this.hasLike = !this.hasLike;
 
+    if (this.hasLike) {
+      this.likeDelay = false;
+      setTimeout(() => {
+        this.likeDelay = true;
+      }, 2000);
+    }
+
     observable.subscribe({
       next: (idea: Idea) => {
         this.idea = idea;
         this.loading = false;
-        if (!this.hasLike) {
-          this.likeDelay = false;
-          setTimeout(() => {
-            this.likeDelay = true;
-          }, 5000);
-        }
       },
       error: (error) => {
         console.log(error);
