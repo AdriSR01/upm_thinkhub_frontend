@@ -21,6 +21,10 @@ export class NavBarComponent {
 
     this.authService.loggedEvent.subscribe(() => {
       this.isLoggedIn = this.authService.user !== undefined;
+
+      if (this.router.url.endsWith('myIdeas') || this.router.url.endsWith('publishIdea') || this.router.url.includes('editIdea')) {
+        this.router.navigate(['']);
+      }
     });
 
     this.router.events.subscribe(() => {
